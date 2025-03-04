@@ -10,25 +10,24 @@ Members
 - Design Lead: [Jenah Mansour](https://github.com/Jenahh)
 - Quality Assurance Tester: [Abdul Chattha](https://github.com/beastgamer69420)
 
-About Our Software
-------------------
+About
+-----
 
 The SSL website had issues.  We're fixing those issues.
+
+Build Instructions
+------------------
+
+WIP
 
 Platforms Tested on
 -------------------
 
-- [ ] MacOS
 - [ ] Android
 - [ ] iOS
 - [ ] Linux
+- [ ] MacOS
 - [ ] Windows
-
-Important Links
----------------
-
-[Kanban Board]()
-[Designs]()
 
 Styles Guide
 ------------
