@@ -1,4 +1,4 @@
-# [Name of the Project] : [30]
+# SSL Website : [30]
 # Members
 Project Manager: [Andrew Dang] ([theavgandrew])\
 Communications Lead: [Ella Vu] ([iwasella])\
