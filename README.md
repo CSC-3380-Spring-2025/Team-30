@@ -4,11 +4,11 @@ SSL Website Revamp (Team 30)
 Members
 -------
 
-Project Manager: [Andrew Dang](https://github.com/theavgandrew)
-Communications Lead: [Ella Vu](https://github.com/iwasella)
-Git Master: [Cameron Shortt](https://github.com/cameronshortt)
-Design Lead: [Jenah Mansour](https://github.com/Jenahh)
-Quality Assurance Tester: [Abdul Chattha](https://github.com/beastgamer69420)
+- Project Manager: [Andrew Dang](https://github.com/theavgandrew)
+- Communications Lead: [Ella Vu](https://github.com/iwasella)
+- Git Master: [Cameron Shortt](https://github.com/cameronshortt)
+- Design Lead: [Jenah Mansour](https://github.com/Jenahh)
+- Quality Assurance Tester: [Abdul Chattha](https://github.com/beastgamer69420)
 
 About Our Software
 ------------------
@@ -18,11 +18,11 @@ The SSL website had issues.  We're fixing those issues.
 Platforms Tested on
 -------------------
 
-[ ] MacOS
-[ ] Android
-[ ] iOS
-[ ] Linux
-[ ] Windows
+- [ ] MacOS
+- [ ] Android
+- [ ] iOS
+- [ ] Linux
+- [ ] Windows
 
 Important Links
 ---------------
