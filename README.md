@@ -18,7 +18,8 @@ The SSL website had issues.  We're fixing those issues.
 Build Instructions
 ------------------
 
-WIP
+- Build: `make`
+- Run development server: `make run`
 
 Platforms Tested on
 -------------------
