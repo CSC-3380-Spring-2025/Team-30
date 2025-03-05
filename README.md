@@ -18,8 +18,8 @@ The SSL website had issues.  We're fixing those issues.
 Build Instructions
 ------------------
 
-- Build: `make`
-- Run development server: `make run`
+- Install Dependencies: `npm install`
+- Run development server: `npm run dev`
 
 Platforms Tested on
 -------------------
