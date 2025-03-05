@@ -18,7 +18,8 @@ The SSL website had issues.  We're fixing those issues.
 Build Instructions
 ------------------
 
-WIP
+- Install Dependencies: `npm install`
+- Run development server: `npm run dev`
 
 Platforms Tested on
 -------------------
