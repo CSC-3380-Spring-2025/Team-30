@@ -1,4 +1,3 @@
-/* components/HamburgerMenu.module.css */
 .hamburgerMenu {
   position: relative;
 }
@@ -23,9 +22,9 @@
   position: fixed;
   top: 0;
   left: -100%; /* Start off-screen to the left */
-  width: 250px; /* Adjust the width as needed */
+  width: 250px; 
   height: 100vh;
-  background-color: #333;
+  background-color: #141414;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
   transition: left 0.3s ease;
   z-index: 999;
@@ -37,7 +36,7 @@
 
 .menuContent ul {
   list-style: none;
-  padding: 80px 20px 20px; /* Add padding to avoid overlap with the hamburger icon */
+  padding: 80px 20px 20px; 
   margin: 0;
 }
 
@@ -46,9 +45,9 @@
 }
 
 .menuContent a {
-  color: #1b1a1a;
+  color: #fff;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 25px;
 }
 
 /* Hamburger icon animation */

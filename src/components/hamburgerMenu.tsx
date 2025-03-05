@@ -1,5 +1,8 @@
 import { useState } from "react";
 import styles from "../styles/Hamburger.module.css";
+import { vt323 } from "../utils/fonts"; 
+
+
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,11 +23,12 @@ const HamburgerMenu = () => {
       </div>
 
       <div className={`${styles.menuContent} ${isOpen ? styles.active : ""}`}>
-        <ul>
+        <ul className={vt323.className}>
           <li><a href="#">Home</a></li>
+          <li><a href="#">CTFs</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Forum</a></li>
           <li><a href="#">About</a></li>
-          <li><a href="#">CTF</a></li>
-          <li><a href="#">Contact</a></li>
         </ul>
       </div>
     </div>

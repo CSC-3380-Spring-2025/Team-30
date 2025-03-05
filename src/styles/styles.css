@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Ensures padding and borders don't affect width calculations */
+  box-sizing: border-box; 
 }
 
 .container {
@@ -23,5 +23,5 @@
 }
 
 .content {
-  flex-grow: 1; /* Content will take up remaining space */
+  flex-grow: 1; 
 }
