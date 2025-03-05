@@ -21,12 +21,13 @@ export default function Home() {
   return (
     <div className="container">
       <div className="topBox">
-        <HamburgerMenu /> {/* Add the HamburgerMenu here */}
+        <HamburgerMenu /> 
       </div>
       <div className="content">
-        {/* Your content goes here */}
       </div>
-      <div className="bottomBox"></div>
+      <div className="bottomBox">
+      <p className={`${vt323.className} bottomText`}>©2025 Security Society at LSU</p>
+      </div>
     </div>
   );
 }

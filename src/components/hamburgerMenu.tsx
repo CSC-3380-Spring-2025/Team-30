@@ -1,8 +1,6 @@
 import { useState } from "react";
 import styles from "../styles/Hamburger.module.css";
-import { vt323 } from "../utils/fonts"; 
-
-
+import { vt323 } from "../utils/fonts"; // Import the font 
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
