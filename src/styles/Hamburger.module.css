@@ -24,7 +24,7 @@
   left: -100%; /* Start off-screen to the left */
   width: 250px; 
   height: 100vh;
-  background-color: #141414;
+  background-color: #242424;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
   transition: left 0.3s ease;
   z-index: 999;
