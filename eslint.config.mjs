@@ -12,9 +12,15 @@ const eslintConfig = [
 			'eslint:recommended',
 			'plugin:@typescript-eslint/strict-type-checked',
 			'plugin:@typescript-eslint/stylistic-type-checked',
-			'next'
+			'next', 
 		],
+		parser: '@typescript-eslint/parser',  // Use TypeScript parser
+		parserOptions: {
+      project: './tsconfig.json',  // Path to tsconfig for type information
+    }
 	}),
 ];
+
+
 
 export default eslintConfig;
