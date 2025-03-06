@@ -18,7 +18,6 @@ const HamburgerMenu = () => {
         <div className={styles.bar}></div>
         <div className={styles.bar}></div>
       </div>
-
       <div className={`${styles.menuContent} ${isOpen ? styles.active : ""}`}>
         <ul className={vt323.className}>
           <li><a href="#">Home</a></li>
