@@ -13,8 +13,7 @@ const HamburgerMenu = () => {
     <div className={styles.hamburgerMenu}>
       <div
         className={`${styles.menuIcon} ${isOpen ? styles.open : ""}`}
-        onClick={toggleMenu}
-      >
+        onClick={toggleMenu}>
         <div className={styles.bar}></div>
         <div className={styles.bar}></div>
         <div className={styles.bar}></div>
