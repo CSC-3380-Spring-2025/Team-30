@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height */
+}
+
+.topBox {
+  background-color: #1b1a1a;
+  height: 75px;
+  width: 100vw; /* Only the content width */
+}
+
+.bottomBox {
+  background-color: #1b1a1a; 
+  height: 100px; 
+  width: 100vw; /* Only the content width */
+  display: flex;
+  justify-content: center; /* Center text horizontally */
+  align-items: flex-end; /* Move text to the bottom */
+  padding-bottom: 10px; /* Small spacing from bottom */
+}
+
+.bottomText {
+  color: #fff; 
+  font-size: clamp(12px, 1.5vw, 18px); /* 12px on small screens, 18px on larger*/
+  text-align: center;
+}
+
+.content {
+  flex-grow: 1; 
+}
