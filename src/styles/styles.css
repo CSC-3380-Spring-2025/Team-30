@@ -19,17 +19,34 @@
 .bottomBox {
   background-color: #1b1a1a; 
   height: 100px; 
-  width: 100vw; /* Only the content width */
+  width: 100vw; /* Full viewport width */
   display: flex;
-  justify-content: center; /* Center text horizontally */
-  align-items: flex-end; /* Move text to the bottom */
-  padding-bottom: 10px; /* Small spacing from bottom */
+  flex-direction: column; /* Stack vertically */
+  gap: 10px; 
+  justify-content: flex-end; /* Align content to the bottom */
+  align-items: center; /* Center content horizontally */
+  padding-bottom: 8px; /* Small spacing from bottom */
 }
 
 .bottomText {
   color: #fff; 
   font-size: clamp(12px, 1.5vw, 18px); /* 12px on small screens, 18px on larger*/
   text-align: center;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 15px;
+}
+
+.socialIcon {
+  font-size: 24px;
+  color: #ffffff; /* Change the color as needed */
+  transition: color 0.3s ease;
+}
+
+.socialIcon:hover {
+  color: #1da1f2; /* Change hover color as needed */
 }
 
 .content {
