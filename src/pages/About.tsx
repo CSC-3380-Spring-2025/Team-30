@@ -7,6 +7,9 @@ export default function Home() {
         <HamburgerMenu /> 
       </div>
       <div className="content">
+        <div className="title">
+            SSL Officers
+        </div>
       </div>
       <div className="bottomBox">
       <p className={`bottomText`}>©2025 Security Society at LSU</p>
