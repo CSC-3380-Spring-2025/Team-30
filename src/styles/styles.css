@@ -11,9 +11,13 @@
 }
 
 .topBox {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   background-color: #1b1a1a;
   height: 75px;
   width: 100vw; /* Only the content width */
+  padding-top: 5px;
 }
 
 .bottomBox {
@@ -49,6 +53,24 @@
   color: #452D7C; /* Change hover color as needed */
 }
 
+.homepagePicture {
+  max-height: 58%; /* Limit the height to 50% of the container */
+  max-width: 100%; /* Ensure the image doesn't overflow horizontally */
+  height: auto; /* Maintain aspect ratio */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain; 
+}
+
+.logo {
+  height: auto; 
+  width: auto; /* Adjust based on the image size */
+  max-height: 100%;
+}
+
 .content {
   flex-grow: 1; 
+  width: 100vw;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  padding-top: 25px; 
 }

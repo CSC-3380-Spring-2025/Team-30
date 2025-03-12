@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import {VT323} from "next/font/google";
 import HamburgerMenu from "@/components/HamburgerMenu/hamburgerMenu"; // Import the HamburgerMenu component
 import { IoLogoDiscord } from "react-icons/io5"; // Discord Logo
@@ -14,21 +16,38 @@ export default function Home() {
   return (
     <div className="container">
       <div className="topBox">
-        <HamburgerMenu /> 
+        <a href="https://google.com"> 
+          <Image 
+          src="/ssl-logo.png" 
+          width={75} 
+          height={75} 
+          className="logo"
+          alt="Logo"
+          />
+          </a>
+          <HamburgerMenu /> 
       </div>
       <div className="content">
+        <Image 
+          src="/homepage-picture.png" 
+          width={500} 
+          height={300} 
+          
+          className="homepagePicture"
+          alt="Logo"
+        />
       </div>
       <div className="bottomBox">
         <div className="socialLinks">
-          <a href="https://discord.gg/r6bJ8vrM" target="_blank" rel="noopener noreferrer">
+          <Link href="https://discord.gg/r6bJ8vrM" target="_blank" rel="noopener noreferrer">
             <IoLogoDiscord className="socialIcon" />
-          </a>
-          <a href="https://tigerlink.lsu.edu/ssl/home/" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link href="https://tigerlink.lsu.edu/ssl/home/" target="_blank" rel="noopener noreferrer">
             <GiTigerHead className="socialIcon" />
-          </a>
-          <a href="https://www.linkedin.com/company/security-society-at-lsu/" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link href="https://www.linkedin.com/company/security-society-at-lsu/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="socialIcon" />
-          </a>
+          </Link>
         </div>
           <p className={`${vt323.className} bottomText`}>©2025 Security Society at LSU</p>
       </div>
