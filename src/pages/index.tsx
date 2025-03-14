@@ -20,6 +20,7 @@ const homePageImages = [
   "/home-image-3.png", 
   "/home-image-4.png",
   "/home-image-5.png",
+  "/home-image-6.png",
 ];
 
 export default function Home() {
