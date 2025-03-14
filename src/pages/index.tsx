@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {VT323} from "next/font/google";
 import HamburgerMenu from "@/components/HamburgerMenu/hamburgerMenu"; // Import the HamburgerMenu component
+import EmblaCarousel from '@/components/EmblaCarousel/emblaCarousel'; //Imort the EmblaCarousel component
 import { IoLogoDiscord } from "react-icons/io5"; // Discord Logo
 import { FaLinkedin  } from "react-icons/fa6"; // Linkedin Logo
 import { GiTigerHead } from "react-icons/gi"; // Tiger Logo
@@ -11,6 +12,15 @@ const vt323 = VT323({
   weight: '400',
   subsets: ['latin'],
 })
+
+// Array of images for the carousel
+const homePageImages = [
+  "/home-image-1.png",
+  "/home-image-2.png",
+  "/home-image-3.png", 
+  "/home-image-4.png",
+  "/home-image-5.png",
+];
 
 export default function Home() {
   return (
@@ -28,14 +38,7 @@ export default function Home() {
           <HamburgerMenu /> 
       </div>
       <div className="content">
-        <Image 
-          src="/homepage-picture.png" 
-          width={500} 
-          height={300} 
-          
-          className="homepagePicture"
-          alt="Logo"
-        />
+        <EmblaCarousel slides={homePageImages} />
       </div>
       <div className="bottomBox">
         <div className="socialLinks">

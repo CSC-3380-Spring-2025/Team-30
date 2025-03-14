@@ -1,0 +1,59 @@
+.embla {
+  max-width: 70rem;
+  margin: auto;
+  --slide-height: 35rem;
+  --slide-spacing: 1rem;
+  --slide-size: 100%;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y; /* Allow vertical scrolling if needed */
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  pointer-events: none; /* Disable pointer events */
+}
+
+.embla__slide img {
+  width: 100%;
+  height: var(--slide-height);
+  object-fit: cover; /* Zoom in to fill the container */
+  pointer-events: none;
+}
+
+.embla__controls {
+  display: flex;
+  justify-content: center; /* Center the dots */
+  margin-top: 1rem;
+}
+
+.embla__dots {
+  display: flex;
+  gap: 0.5rem; /* Add spacing between dots */
+}
+
+.embla__dot {
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  background-color: #ccc;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 0.5rem; 
+  width: 0.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.embla__dot--selected {
+  background-color: #333; 
+}
