@@ -10,61 +10,12 @@
   height: 100vh; /* Full height */
 }
 
-.topBox {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  background-color: #1b1a1a;
-  height: 75px;
-  width: 100vw; /* Only the content width */
-  padding-top: 5px;
-}
-
-.bottomBox {
-  background-color: #1b1a1a; 
-  height: 100px; 
-  width: 100vw; /* Full viewport width */
-  display: flex;
-  flex-direction: column; /* Stack vertically */
-  gap: 10px; 
-  justify-content: flex-end; /* Align content to the bottom */
-  align-items: center; /* Center content horizontally */
-  padding-bottom: 8px; /* Small spacing from bottom */
-}
-
-.bottomText {
-  color: #fff; 
-  font-size: clamp(12px, 1.5vw, 18px); /* 12px on small screens, 18px on larger*/
-  text-align: center;
-}
-
-.socialLinks {
-  display: flex;
-  gap: 15px;
-}
-
-.socialIcon {
-  font-size: 24px;
-  color: #ffffff; /* Change the color as needed */
-  transition: color 0.3s ease;
-}
-
-.socialIcon:hover {
-  color: #452D7C; /* Change hover color as needed */
-}
-
 .homepagePicture {
   max-height: 58%; /* Limit the height to 50% of the container */
   max-width: 100%; /* Ensure the image doesn't overflow horizontally */
   height: auto; /* Maintain aspect ratio */
   width: auto; /* Maintain aspect ratio */
   object-fit: contain; 
-}
-
-.logo {
-  height: auto; 
-  width: auto; /* Adjust based on the image size */
-  max-height: 100%;
 }
 
 .content {

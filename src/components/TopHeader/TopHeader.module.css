@@ -1,0 +1,15 @@
+.topBox {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background-color: #1b1a1a;
+  height: 75px;
+  width: 100vw; /* Only the content width */
+  padding-top: 5px;
+}
+
+.logo {
+  height: auto; 
+  width: auto; /* Adjust based on the image size */
+  max-height: 100%;
+}
