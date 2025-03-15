@@ -9,6 +9,7 @@
   justify-content: flex-end; /* Align content to the bottom */
   align-items: center; /* Center content horizontally */
   padding-bottom: 8px; /* Small spacing from bottom */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .bottomText {

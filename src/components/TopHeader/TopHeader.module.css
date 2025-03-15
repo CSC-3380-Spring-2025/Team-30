@@ -6,6 +6,7 @@
   height: 75px;
   width: 100vw; /* Only the content width */
   padding-top: 5px;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .logo {

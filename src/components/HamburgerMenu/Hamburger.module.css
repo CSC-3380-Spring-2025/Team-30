@@ -61,4 +61,9 @@
   color: #fff;
   text-decoration: none;
   font-size: clamp(16px, 4vw, 30px);
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+.menuContent a:hover {
+  color: #555454;
 }

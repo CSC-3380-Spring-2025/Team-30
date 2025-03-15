@@ -6,7 +6,7 @@ import styles from './TopHeader.module.css';
 const TopHeader = () => {
   return (
     <div className={styles.topBox}>
-      <a href="https://google.com">
+      <a href="/">
         <Image
           src="/ssl-logo.png"
           width={75}
