@@ -18,7 +18,7 @@ const homePageImages = [
 export default function Home() {
   return (
     <div className="container">
-      <TopHeader />
+
       <div className="content">
         <EmblaCarousel slides={homePageImages} />
 
@@ -33,7 +33,7 @@ export default function Home() {
           <p className={`${vt323.className} ${"join-text"}`}>Join Now</p>
         </a>
       </div>
-      <BottomHeader />
+
     </div>
   );
 }
