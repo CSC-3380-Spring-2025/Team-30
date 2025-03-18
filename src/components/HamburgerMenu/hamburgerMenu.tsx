@@ -22,7 +22,7 @@ const HamburgerMenu = () => {
         <ul className={vt323.className}>
           <li><a href="#">Home</a></li>
           <li><a href="#">CTFs</a></li>
-          <li><a href="#">Events</a></li>
+          <li><a href="/events">Events</a></li>
           <li><a href="#">Forum</a></li>
           <li><a href="#">About</a></li>
         </ul>
