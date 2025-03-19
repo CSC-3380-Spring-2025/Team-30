@@ -54,3 +54,10 @@
   color: #555454; /* Darker shade of the color on hover */
 }
 
+.cybersecurity-news {
+  margin-top: auto; /* Pushes the cybersecurity section to the bottom */
+  padding: 20px;
+  background-color: #111; /* Dark background for a futuristic look */
+  color: white;
+}
+
