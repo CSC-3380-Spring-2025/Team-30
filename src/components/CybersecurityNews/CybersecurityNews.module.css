@@ -1,8 +1,11 @@
 .news_container {
+  font-size: 30px;
   width: 100%;
   max-width: 1000px; /* Increased max width to accommodate horizontal layout */
   margin: 0 auto;
   text-align: center;
+  border-radius: 15px; /* Add rounded corners to the bigger box */
+  overflow: hidden; /* Ensure child elements (like images) don't overflow rounded corners */
 }
 
 .news_list {
@@ -18,7 +21,6 @@
   overflow: hidden;
   width: 300px; /* Set a fixed width for the items */
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow */
 }
 
 .news_image_container {

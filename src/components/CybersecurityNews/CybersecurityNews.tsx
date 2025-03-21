@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./CybersecurityNews.module.css";
+import { vt323 } from "../../utils/fonts"; // Import the font
 
 interface Article {
   title: string;
@@ -29,7 +30,7 @@ export default function CybersecurityNews() {
               article.urlToImage.trim() !== "" &&
               /\.(jpg|jpeg|png|gif)$/i.test(article.urlToImage)
           )
-          .slice(0, 5); // Show top 5 articles
+          .slice(0, 3); // Show top 3 articles
 
         setArticles(filteredArticles);
       } catch (err) {
@@ -42,11 +43,11 @@ export default function CybersecurityNews() {
     fetchNews();
   }, []);
 
-  if (loading) return <p>Loading cybersecurity news...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p className={vt323.className}>Loading cybersecurity news...</p>;
+  if (error) return <p className={vt323.className}>{error}</p>;
 
   return (
-    <div className={styles.news_container}>
+    <div className={`${styles.news_container} ${vt323.className}`}>
       <h2>Cybersecurity News</h2>
       <div className={styles.news_list}>
         {articles.map((article, index) => (

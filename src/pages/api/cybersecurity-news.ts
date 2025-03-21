@@ -1,45 +1,89 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import NewsAPI from 'ts-newsapi'; // Import the ts-newsapi library
+import levenshtein from "fast-levenshtein"; // For deduplication
+
+// Initialize the NewsAPI client
+const apiKey = process.env.NEWSAPI_KEY; // Get the API key from .env
+if (!apiKey) {
+  throw new Error("NEWSAPI_KEY is not defined in .env");
+}
+
+const newsapi = new NewsAPI(apiKey); // Use the API key from .env
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const apiKey = process.env.NEWSAPI_KEY; // Store your NewsAPI key securely in the .env file
-    if (!apiKey) {
-      return res.status(400).json({ error: "API key is missing" });
+    // Fetch cybersecurity articles using ts-newsapi
+    const response = await newsapi.getEverything({
+      q: 'cybersecurity OR "data breach" OR ransomware OR hacking OR "cyber attack"',
+      language: 'en',
+      sortBy: 'publishedAt',
+      pageSize: 30, // Fetch more articles to ensure we have enough
+    });
+
+    if (response.status !== 'ok') {
+      throw new Error('Failed to fetch news');
     }
 
-    // Fetch news articles related to cybersecurity
-    const response = await fetch(
-      `https://newsapi.org/v2/everything?q=cybersecurity&language=en&sortBy=publishedAt&pageSize=10&apiKey=${apiKey}`
-    );
+    // Filter articles that are cybersecurity-related
+    const filteredArticles = response.articles.filter((article) => {
+      if (!article.description) return false;
+      
+      const isCybersecurityRelated =
+        article.title.toLowerCase().includes("cybersecurity") ||
+        article.title.toLowerCase().includes("data breach") ||
+        article.title.toLowerCase().includes("ransomware") ||
+        article.title.toLowerCase().includes("hacking") ||
+        article.title.toLowerCase().includes("cyber attack") ||
+        article.description.toLowerCase().includes("cybersecurity") ||
+        article.description.toLowerCase().includes("data breach") ||
+        article.description.toLowerCase().includes("ransomware") ||
+        article.description.toLowerCase().includes("hacking") ||
+        article.description.toLowerCase().includes("cyber attack");
 
-    // Check if the response is successful
-    if (!response.ok) throw new Error("Failed to fetch news");
-
-    const data = await response.json();
-
-    // Ensure that we have articles and filter out any non-article content
-    const articles = data.articles.filter((article: any) => {
-      // Ensure articles have a valid title, description, and URL
-      // Make sure the description is within a reasonable length to be a summary (not too long)
       return (
         article.title &&
         article.description &&
-        article.description.length > 30 && // Description should be at least 30 characters to be a valid summary
-        article.description.length < 500 && // Ensure description is not too long (e.g., not a body of text)
+        article.description.length > 30 &&
+        article.description.length < 500 &&
         article.url &&
-        article.urlToImage
+        article.urlToImage &&
+        /\.(jpg|jpeg|png|gif)$/i.test(article.urlToImage) &&
+        isCybersecurityRelated
       );
     });
 
-    // Limit to 5 articles
-    const limitedArticles = articles.slice(0, 3);
+    // Deduplicate articles based on Levenshtein distance
+    const deduplicateArticles = (articles: typeof response.articles, threshold: number = 10) => {
+      const uniqueArticles: typeof response.articles = [];
 
-    if (limitedArticles.length === 0) {
-      return res.status(404).json({ error: "No valid cybersecurity articles found" });
+      for (const article of articles) {
+        const isDuplicate = uniqueArticles.some((uniqueArticle) => {
+          const distance = levenshtein.get(
+            article.title.toLowerCase().trim(),
+            uniqueArticle.title.toLowerCase().trim()
+          );
+          return distance <= threshold; // Articles are similar if distance is below the threshold
+        });
+
+        if (!isDuplicate) {
+          uniqueArticles.push(article);
+        }
+      }
+
+      return uniqueArticles;
+    };
+
+    const uniqueArticles = deduplicateArticles(filteredArticles);
+
+    // Limit to 3 articles
+    const limitedArticles = uniqueArticles.slice(0, 3);
+
+    if (limitedArticles.length < 3) {
+      console.warn("Not enough unique cybersecurity articles found.");
     }
 
     // Return the valid cybersecurity articles
-    res.status(200).json({ limitedArticles });
+    res.status(200).json({ articles: limitedArticles });
   } catch (error) {
     // Catch and log any errors
     console.error("Error fetching news:", error);
