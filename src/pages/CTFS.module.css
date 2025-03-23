@@ -1,7 +1,12 @@
 .title {
+    margin-top: 20px;
     font-size: 60px;
     text-align: center;
   }
+
+  .content {
+    padding-top: 20px; 
+}
 
 .ctficon {
     width: 250px;
@@ -9,12 +14,13 @@
     object-fit: cover;    
   }
 
-.ctflisting{
-    padding-left: 480px;
+  .ctflisting {
     display: flex;
-    align-items: center; 
-    gap: 100px;
-  }
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px; 
+}
 
   
 .ctfnumber{
@@ -22,7 +28,27 @@
     padding-left: 50px;
 }
 
+.ctftext {
+    margin-top: 10px;
+    text-align: center;
+  }
+
 .ctfname {
     font-size: 45px;
     text-align: center;
   }
+
+.ctfdesc{
+    font-size: 40px;
+    text-align: center;
+}
+
+.desccontainer{
+    width: 800px;
+    height: 500px;
+    padding: 20px;
+    box-sizing: border-box;   
+    overflow: auto;           
+    margin: 20px auto; 
+}
+
