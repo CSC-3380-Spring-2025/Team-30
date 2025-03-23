@@ -1,0 +1,28 @@
+.title {
+    font-size: 60px;
+    text-align: center;
+  }
+
+.ctficon {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;    
+  }
+
+.ctflisting{
+    padding-left: 480px;
+    display: flex;
+    align-items: center; 
+    gap: 100px;
+  }
+
+  
+.ctfnumber{
+    font-size: 55px;
+    padding-left: 50px;
+}
+
+.ctfname {
+    font-size: 45px;
+    text-align: center;
+  }
