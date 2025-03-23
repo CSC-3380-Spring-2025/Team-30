@@ -28,9 +28,9 @@ export default function Home() {
                         Find the Flag
                     </div>
                     <div className={styles.desccontainer}>
-                    <div className={styles.ctfdesc}>
-                        Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
-                    </div>
+                        <div className={styles.ctfdesc}>
+                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
+                        </div>
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
@@ -42,23 +42,23 @@ export default function Home() {
                         Lost Flag
                     </div>
                     <div className={styles.desccontainer}>
-                    <div className={styles.ctfdesc}>
-                        Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
-                    </div>
+                        <div className={styles.ctfdesc}>
+                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
+                        </div>
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
                     <img src="./CTFIcon.png" alt="CTF Icon" className={styles.ctficon} />
                     <div className={styles.ctfnumber}>
-                        Task 2
+                        Task
                     </div>
                     <div className={styles.ctfname}>
-                    Backup Fail
+                        Backup Fail
                     </div>
                     <div className={styles.desccontainer}>
-                    <div className={styles.ctfdesc}>
-                        Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
-                    </div>
+                        <div className={styles.ctfdesc}>
+                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
+                        </div>
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
@@ -70,9 +70,9 @@ export default function Home() {
                         Badly Lost Flag
                     </div>
                     <div className={styles.desccontainer}>
-                    <div className={styles.ctfdesc}>
-                        Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
-                    </div>
+                        <div className={styles.ctfdesc}>
+                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
+                        </div>
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
@@ -84,9 +84,9 @@ export default function Home() {
                         Ransomware
                     </div>
                     <div className={styles.desccontainer}>
-                    <div className={styles.ctfdesc}>
-                        Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
-                    </div>
+                        <div className={styles.ctfdesc}>
+                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
+                        </div>
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
@@ -98,9 +98,9 @@ export default function Home() {
                         Lost Key
                     </div>
                     <div className={styles.desccontainer}>
-                    <div className={styles.ctfdesc}>
-                        Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
-                    </div>
+                        <div className={styles.ctfdesc}>
+                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
+                        </div>
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
@@ -112,9 +112,9 @@ export default function Home() {
                         ENIGMA
                     </div>
                     <div className={styles.desccontainer}>
-                    <div className={styles.ctfdesc}>
-                        Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
-                    </div>
+                        <div className={styles.ctfdesc}>
+                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
+                        </div>
                     </div>
                 </div>
             </div>
