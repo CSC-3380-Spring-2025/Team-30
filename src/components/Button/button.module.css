@@ -1,0 +1,14 @@
+.button {
+    background-color: transparent;
+    border: 2px solid #FFFFFF;
+    color: white;
+    text-align: center;
+    padding: 8px 16px;
+    transition: 0.4s;
+    font-family: VT323;
+}
+
+.button:hover {
+    background-color: #FFFFFF;
+    color: black;
+}

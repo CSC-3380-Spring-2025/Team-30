@@ -2,6 +2,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import Button from "@/components/Button/button"
 // run npm install @fullcalendar/react @fullcalendar/daygrid @fullcalendar/interaction
 
 function Events() {
@@ -16,17 +17,9 @@ function Events() {
             end: "timeGridDay,timeGridWeek,dayGridMonth" // day, week, month buttons
         }}
       />
-      <button
-      style = {{
-        backgroundColor: "black",
-        color: "white",
-        width: "250px",
-        height: "50px",
-        marginTop: "30px"
-      }}
-      >
-        Create Event
-      </button>
+      <Button
+      text="Create Event"
+      />
     </>
   );
 }
