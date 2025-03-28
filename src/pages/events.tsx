@@ -8,6 +8,12 @@ import Button from "@/components/Button/button"
 function Events() {
   return (
     <>
+      <div style = {{
+        width: "80%",
+        height: "50%",
+        margin: "0 auto",
+        padding: "20px"
+      }}>
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
         initialView="dayGridMonth"
@@ -17,9 +23,17 @@ function Events() {
             end: "timeGridDay,timeGridWeek,dayGridMonth" // day, week, month buttons
         }}
       />
+      </div>
+
+      <div style = {{
+        margin: "20px 0",
+        display: "flex",
+        justifyContent: "center",
+      }}>
       <Button
       text="Create Event"
       />
+      </div>
     </>
   );
 }
