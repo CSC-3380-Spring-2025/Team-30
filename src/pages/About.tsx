@@ -8,14 +8,6 @@ export default function Home() {
 //gonna have to figure out how to make the text appear as the picture slides
 //its not actively registering that the cursor is still over the proximity of the image so it just slides back before i move the cursor
 
-  const handleHover = () => {
-    if (!isMoving) {
-      setIsMoving(true);
-      setTimeout(() => {
-        setIsMoving(false);
-      }, 10000);
-    }
-  };
 
   return (
     <div className={styles.container}>
@@ -29,8 +21,7 @@ export default function Home() {
         <div className={styles.year}>2024-2025</div>
         <div className={styles.president}>
           <div className={styles.pic}>
-            <img src="./images/SSLPresident.png" alt="SSL President" className={`${styles.picture} ${isMoving ? styles.animated : ''}`}
-              onMouseEnter={handleHover} />
+            <img src="./images/SSLPresident.png" alt="SSL President" className={`${styles.picture}`} />
           </div>
           <p className={styles.name}>
             President: Cameron Shortt
@@ -43,8 +34,7 @@ export default function Home() {
         </div>
         <div className={styles.vicepresident}>
           <div className={styles.pic}>
-            <img src="./images/SSLVicePresident.png" alt="SSL Vice President" className={`${styles.picture} ${isMoving ? styles.animated : ''}`}
-              onMouseEnter={handleHover} />
+            <img src="./images/SSLVicePresident.png" alt="SSL Vice President" className={`${styles.picture} `}/>
           </div>
           <p className={styles.name}>
             Vice President: Ronald Gibson
@@ -57,8 +47,7 @@ export default function Home() {
         </div>
         <div className={styles.secratary}>
           <div className={styles.pic}>
-            <img src="./images/SSLSecratary.png" alt="SSL Secratary" className={`${styles.picture} ${isMoving ? styles.animated : ''}`}
-              onMouseEnter={handleHover} />
+            <img src="./images/SSLSecratary.png" alt="SSL Secratary" className={`${styles.picture} $`} />
           </div>
           <p className={styles.name}>
             Secratary: Tai Tran
@@ -71,8 +60,7 @@ export default function Home() {
         </div>
         <div className={styles.treasurer}>
           <div className={styles.pic}>
-            <img src="./images/SSLTreasurer.png" alt="SSL Secratary" className={`${styles.picture} ${isMoving ? styles.animated : ''}`}
-              onMouseEnter={handleHover} />
+            <img src="./images/SSLTreasurer.png" alt="SSL Secratary" className={`${styles.picture} `} />
           </div>
           <p className={styles.name}>
             Treasurer: Landon Truong
