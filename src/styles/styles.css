@@ -11,13 +11,13 @@
 }
 
 .topBox {
-  background-color: #1b1a1a;
+  background-color: #000000;
   height: 75px;
   width: 100vw; /* Only the content width */
 }
 
 .bottomBox {
-  background-color: #1b1a1a; 
+  background-color: #000000; 
   height: 100px; 
   width: 100vw; /* Only the content width */
   display: flex;
@@ -34,4 +34,12 @@
 
 .content {
   flex-grow: 1; 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
