@@ -10,28 +10,58 @@
   height: 100vh; /* Full height */
 }
 
-.topBox {
-  background-color: #1b1a1a;
-  height: 75px;
-  width: 100vw; /* Only the content width */
-}
-
-.bottomBox {
-  background-color: #1b1a1a; 
-  height: 100px; 
-  width: 100vw; /* Only the content width */
-  display: flex;
-  justify-content: center; /* Center text horizontally */
-  align-items: flex-end; /* Move text to the bottom */
-  padding-bottom: 10px; /* Small spacing from bottom */
-}
-
-.bottomText {
-  color: #fff; 
-  font-size: clamp(12px, 1.5vw, 18px); /* 12px on small screens, 18px on larger*/
-  text-align: center;
+.homepagePicture {
+  max-height: 58%; /* Limit the height to 50% of the container */
+  max-width: 100%; /* Ensure the image doesn't overflow horizontally */
+  height: auto; /* Maintain aspect ratio */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain; 
 }
 
 .content {
   flex-grow: 1; 
+<<<<<<< HEAD
 }
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+=======
+  width: 100vw;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  overflow-y: auto;
+  padding-top: 5px;
+}
+
+.join-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.join-image {
+  padding-top: 50px;  
+  max-width: 10%;
+  height: auto;
+}
+
+.join-text {
+  font-size: calc(1rem + 1.5vw); /* Responsive font size */
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 15px; 
+  text-align: center;
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+.join-link:hover {
+  color: #555454; /* Darker shade of the color on hover */
+>>>>>>> origin/dev
+}
+
