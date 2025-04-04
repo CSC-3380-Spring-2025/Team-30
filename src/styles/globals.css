@@ -18,25 +18,23 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;         
-  scrollbar-width: thin;      
-  scrollbar-color: #202020 black; 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-/* Changed the look of the scrollbar for all pages */
-::-webkit-scrollbar {
-  width: 10px;
+.app-content {
+  flex: 1; /* Makes the main content fill available space */
+  display: flex; /* Optional: use if you want content inside to also use flexbox */
+  flex-direction: column;
 }
 
-::-webkit-scrollbar-track {
-  background: black;
+*::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3); /* Slight transparency for visibility */
+  border-radius: 4px; /* Rounded edges */
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #202020;
-  border-radius: 4px;
+*::-webkit-scrollbar-track {
+  background: transparent; /* Transparent scrollbar track */
 }
