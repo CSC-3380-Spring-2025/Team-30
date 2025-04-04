@@ -17,3 +17,24 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-content {
+  flex: 1; /* Makes the main content fill available space */
+  display: flex; /* Optional: use if you want content inside to also use flexbox */
+  flex-direction: column;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3); /* Slight transparency for visibility */
+  border-radius: 4px; /* Rounded edges */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent; /* Transparent scrollbar track */
+}
