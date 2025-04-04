@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
-
-export default function Home() {
-  return (
-    <div className="container">
-      <div className="topBox">
-        <HamburgerMenu /> 
-      </div>
-      <div className="content">
-      </div>
-      <div className="bottomBox">
-      <p className={`bottomText`}>©2025 Security Society at LSU</p>
-      </div>
-=======
 import EmblaCarousel from "@/components/EmblaCarousel/emblaCarousel";
 import { vt323 } from "@/utils/fonts"; // Import the font
 
@@ -40,7 +25,6 @@ export default function Home() {
       <a href="https://discord.gg/r6bJ8vrM" className="join-link">
         <p className={`${vt323.className} join-text`}>Join Now</p>
       </a>
->>>>>>> origin/dev
     </div>
   );
 }
