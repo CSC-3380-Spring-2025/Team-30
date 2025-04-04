@@ -1,0 +1,151 @@
+.cybernews {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #0f0f0f;
+  border-radius: 16px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.header h2 {
+  font-size: 2.8rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.title_highlight {
+  color: #4CAF50;
+  text-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+}
+
+.title_underline {
+  width: 150px;
+  height: 4px;
+  background: linear-gradient(90deg, #4CAF50, #2196F3);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.news_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.news_card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #2d2d2d;
+}
+
+.news_card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.image_container {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.news_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.news_card:hover .news_image {
+  transform: scale(1.05);
+}
+
+.image_overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.news_card:hover .image_overlay {
+  opacity: 1;
+}
+
+.image_overlay p {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.read_more {
+  color: #4CAF50;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.news_card h3 {
+  padding: 1.2rem;
+  color: #fff;
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 0;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #4CAF50;
+}
+
+.loading_spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(76, 175, 80, 0.3);
+  border-radius: 50%;
+  border-top-color: #4CAF50;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+.error {
+  color: #ff4444;
+  text-align: center;
+  padding: 2rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .cybernews {
+    padding: 1.5rem;
+  }
+  
+  .header h2 {
+    font-size: 2rem;
+  }
+  
+  .news_grid {
+    grid-template-columns: 1fr;
+  }
+}

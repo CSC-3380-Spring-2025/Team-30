@@ -54,3 +54,21 @@
   color: #555454; /* Darker shade of the color on hover */
 }
 
+.cybersecurity-news {
+  margin-top: auto; /* Pushes the cybersecurity section to the bottom */
+  padding: 20px;
+  background-color: #1a1a1a; /* Dark background for a futuristic look */
+  border-radius: 15px; /* Add rounded corners to the bigger box */
+  overflow: hidden; /* Ensure child elements (like images) don't overflow rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.cybersecurity-news h2 {
+  font-size: 2.5rem; /* Keep the title slightly larger */
+  text-decoration: underline;
+}
+.cybersecurity-news p,
+.cybersecurity-news a {
+  font-size: 1rem; 
+}
+
