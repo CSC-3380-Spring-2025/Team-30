@@ -39,6 +39,7 @@
 .embla__dots {
   display: flex;
   gap: 0.5rem; /* Add spacing between dots */
+  padding-bottom: 30px; /* Add space between dots and the next section */
 }
 
 .embla__dot {

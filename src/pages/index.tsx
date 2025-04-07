@@ -15,6 +15,8 @@ export default function Home() {
 =======
 import EmblaCarousel from "@/components/EmblaCarousel/emblaCarousel";
 import { vt323 } from "@/utils/fonts"; // Import the font
+import CybersecurityNews from "@/components/CybersecurityNews/CybersecurityNews"; // Import the CybersecurityNews component
+
 
 // Array of images for the carousel
 const homePageImages = [
@@ -30,6 +32,9 @@ export default function Home() {
   return (
     <div className="content">
       <EmblaCarousel slides={homePageImages} />
+      <div className="cybersecurity-news">
+        <CybersecurityNews />
+      </div>
       <img
         src="/join-now-image.png"
         alt="Join Now Image"
