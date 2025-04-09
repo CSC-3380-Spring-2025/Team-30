@@ -4,15 +4,21 @@
   --slide-height: 35rem;
   --slide-spacing: 1rem;
   --slide-size: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
+/* Shadow only on the image container */
 .embla__viewport {
   overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
 .embla__container {
   display: flex;
-  touch-action: pan-y; /* Allow vertical scrolling if needed */
+  touch-action: pan-y;
   margin-left: calc(var(--slide-spacing) * -1);
 }
 
@@ -20,41 +26,76 @@
   flex: 0 0 var(--slide-size);
   min-width: 0;
   padding-left: var(--slide-spacing);
-  pointer-events: none; /* Disable pointer events */
+  pointer-events: none;
+  position: relative;
 }
 
 .embla__slide img {
   width: 100%;
   height: var(--slide-height);
-  object-fit: cover; /* Zoom in to fill the container */
+  object-fit: cover;
+  pointer-events: none;
+  filter: grayscale(20%) contrast(110%);
+}
+
+/* Dark overlay */
+.embla__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 25, 47, 0.7) 0%,
+    rgba(10, 25, 47, 0.3) 100%
+  );
   pointer-events: none;
 }
 
 .embla__controls {
   display: flex;
-  justify-content: center; /* Center the dots */
+  justify-content: center;
   margin-top: 1rem;
 }
 
 .embla__dots {
   display: flex;
-  gap: 0.5rem; /* Add spacing between dots */
-  padding-bottom: 30px; /* Add space between dots and the next section */
+  gap: 0.8rem;
+  padding-bottom: 30px;
 }
 
 .embla__dot {
   -webkit-tap-highlight-color: transparent;
   appearance: none;
-  background-color: #ccc;
+  background-color: #4a5568; /* Dark gray-blue */
   border: 0;
   border-radius: 50%;
   cursor: pointer;
-  height: 0.5rem; 
-  width: 0.5rem;
+  height: 0.8rem;
+  width: 0.8rem;
   padding: 0;
   margin: 0;
+  transition: all 0.3s ease;
+}
+
+.embla__dot:hover {
+  background-color: #cccccc; 
+  transform: scale(1.2);
 }
 
 .embla__dot--selected {
-  background-color: #333; 
+  background-color: #fff; 
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .embla {
+    --slide-height: 25rem;
+  }
+  
+  .embla__dot {
+    height: 0.7rem;
+    width: 0.7rem;
+  }
 }
