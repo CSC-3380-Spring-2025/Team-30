@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import NewsAPI from "ts-newsapi";
 import levenshtein from "fast-levenshtein";
 import { unstable_cache } from 'next/cache';
+import { mockCyberArticles } from "./mocks/cybersecurity-news-mocks";
 
 const apiKey = process.env.NEWSAPI_KEY;
 if (!apiKey) throw new Error("NEWSAPI_KEY is not defined in .env");
@@ -19,7 +20,14 @@ const LOW_QUALITY_TERMS = [
   'sponsored', 'advertorial', 'opinion', 'guest post',
   'how to', 'tips', 'blog', 'commentary'
 ];
+// Mock handler - uncomment the real one below when needed
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log("Using mock cybersecurity news data");
+  return res.status(200).json({ articles: mockCyberArticles });
+}
 
+// Actual handler - uncomment this when you want to fetch real data
+/*
 const getCyberNews = unstable_cache(
   async () => {
     try {
@@ -143,4 +151,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       message: error instanceof Error ? error.message : 'Unknown error'
     });
   }
-}
+}*/
