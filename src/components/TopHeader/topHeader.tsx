@@ -1,7 +1,7 @@
 // components/TopHeader.tsx
-import Image from 'next/image';
-import HamburgerMenu from '@/components/HamburgerMenu/hamburgerMenu';
-import styles from './TopHeader.module.css';
+import Image from "next/image";
+import HamburgerMenu from "@/components/HamburgerMenu/hamburgerMenu";
+import styles from "./TopHeader.module.css";
 
 const TopHeader = () => {
   return (
