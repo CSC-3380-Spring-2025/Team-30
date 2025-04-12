@@ -2,7 +2,7 @@ import { VT323 } from "next/font/google";
 import styles from "./CTFS.module.css"
 
 
-import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
+// import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
 
 const vt323 = VT323({
     weight: '400',
@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <div className="container">
             <div className="topBox">
-                <HamburgerMenu />
+
             </div>
             <div className="content">
                 <div className={styles.title}>

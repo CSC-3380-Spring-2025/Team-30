@@ -20,16 +20,6 @@
 
 .content {
   flex-grow: 1; 
-<<<<<<< HEAD
-}
-
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
-body {
-  font-family: "VT323", monospace;
-  font-weight: 400;
-  font-style: normal;
-=======
   width: 100vw;
   display: flex;
   flex-direction: column; /* Stack items vertically */
@@ -62,6 +52,5 @@ body {
 
 .join-link:hover {
   color: #555454; /* Darker shade of the color on hover */
->>>>>>> origin/dev
 }
 

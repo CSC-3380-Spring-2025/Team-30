@@ -1,4 +1,4 @@
-import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
+// import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
 import styles from './About.module.css'
 import { useState } from "react";
 
@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className="topBox">
-        <HamburgerMenu />
+
       </div>
       <div className="content">
         <div className={styles.title}>
