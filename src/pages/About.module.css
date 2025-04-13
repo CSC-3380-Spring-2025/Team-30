@@ -1,0 +1,76 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  
+  }
+
+.title {
+    font-size: 60px;
+    text-align: center;
+  }
+
+.president{
+    padding-top: 30px;
+}
+
+
+.year{
+    font-size: 40px;
+    text-align: center;
+}
+
+.pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .picture {
+    width: 300px;
+    height: 300px;
+    /* border-radius: 50%;    For rectangle images but I currently only have circles */
+    object-fit: cover;    
+    /* border: 2px solid #333;  */
+    transition: transform 0.3s ease;
+    transition-delay: 0s;
+  }
+
+  .picture:hover {
+    animation: slideLeftAndHold 10s ease forwards;
+  }
+
+  @keyframes slideLeftAndHold {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-500px);
+    }
+    75% {
+      transform: translateX(-500px); /* Hold position */
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+ .name{
+    text-align: center;
+    font-size: 40px;
+ }
+
+ .bio{
+    padding-top: 30px;
+    text-align: justify;
+    font-size: 30px;
+ }
+
+ .bioContainer{
+    width: 800px;
+    height: 500px;
+    padding: 20px;
+    box-sizing: border-box;   
+    overflow: auto;           
+    margin: 20px auto; 
+ }
