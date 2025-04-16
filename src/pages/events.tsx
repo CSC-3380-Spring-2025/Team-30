@@ -3,7 +3,6 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import Button from "@/components/Button/button";
-// run npm install @fullcalendar/react @fullcalendar/daygrid @fullcalendar/interaction
 
 function Events() {
     return (
@@ -11,7 +10,6 @@ function Events() {
             <div
                 style={{
                     width: "80%",
-                    height: "50%",
                     margin: "0 auto",
                     padding: "20px"
                 }}
