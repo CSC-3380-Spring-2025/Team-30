@@ -8,14 +8,6 @@ export default function Home() {
 //gonna have to figure out how to make the text appear as the picture slides
 //its not actively registering that the cursor is still over the proximity of the image so it just slides back before i move the cursor
 
-  const handleHover = () => {
-    if (!isMoving) {
-      setIsMoving(true);
-      setTimeout(() => {
-        setIsMoving(false);
-      }, 10000);
-    }
-  };
 
   return (
     <div className={styles.container}>
@@ -27,25 +19,24 @@ export default function Home() {
           SSL Officers
         </div>
         <div className={styles.year}>2024-2025</div>
-        <div className={styles.president}>
-          <div className={styles.pic}>
-            <img src="./images/SSLPresident.png" alt="SSL President" className={`${styles.picture} ${isMoving ? styles.animated : ''}`}
-              onMouseEnter={handleHover} />
+        <div className={styles.pic}>
+            <img src="./images/SSLPresident.png" alt="SSL President" className={`${styles.picture} ${isMoving ? styles.animated : ''}`}/>
           </div>
-          <p className={styles.name}>
-            President: Cameron Shortt
-          </p>
-          <div className={styles.bioContainer}>
-            <p className={styles.bio}>
-              Hello, I am Cameron Shortt, a Louisiana State University (LSU) student. My major is computer science, and I have a strong passion for both compiler theory and music, particularly the trumpet. I am a dedicated and analytical thinker who enjoys tackling complex computational problems while also appreciating the artistry of music.
-            </p>
-            </div>
-        </div>
+          <div className={styles.president}>
+            <h2 className={styles.name}>
+            <span>President: Cameron Shortt</span>
+            </h2>
+            <div className={styles.bioContainer}>
+              <p className={styles.bio}>
+              <span>Hello, I am Cameron Shortt, a Louisiana State University (LSU) student. My major is computer science, and I have a strong passion for both compiler theory and music, particularly the trumpet. I am a dedicated and analytical thinker who enjoys tackling complex computational problems while also appreciating the artistry of music.
+              </span>
+              </p>
+              </div>
+          </div>
+        <div className={styles.pic}>
+            <img src="./images/SSLVicePresident.png" alt="SSL Vice President" className={`${styles.picture} ${isMoving ? styles.animated : ''}`} />
+          </div>
         <div className={styles.vicepresident}>
-          <div className={styles.pic}>
-            <img src="./images/SSLVicePresident.png" alt="SSL Vice President" className={`${styles.picture} ${isMoving ? styles.animated : ''}`}
-              onMouseEnter={handleHover} />
-          </div>
           <p className={styles.name}>
             Vice President: Ronald Gibson
           </p>
@@ -55,11 +46,10 @@ export default function Home() {
             </p>
             </div>
         </div>
-        <div className={styles.secratary}>
-          <div className={styles.pic}>
-            <img src="./images/SSLSecratary.png" alt="SSL Secratary" className={`${styles.picture} ${isMoving ? styles.animated : ''}`}
-              onMouseEnter={handleHover} />
+        <div className={styles.pic}>
+            <img src="./images/SSLSecratary.png" alt="SSL Secratary" className={`${styles.picture} ${isMoving ? styles.animated : ''}`}/>
           </div>
+        <div className={styles.secratary}>
           <p className={styles.name}>
             Secratary: Tai Tran
           </p>
@@ -69,11 +59,10 @@ export default function Home() {
             </p>
             </div>
         </div>
-        <div className={styles.treasurer}>
-          <div className={styles.pic}>
-            <img src="./images/SSLTreasurer.png" alt="SSL Secratary" className={`${styles.picture} ${isMoving ? styles.animated : ''}`}
-              onMouseEnter={handleHover} />
+        <div className={styles.pic}>
+            <img src="./images/SSLTreasurer.png" alt="SSL Secratary" className={`${styles.picture} ${isMoving ? styles.animated : ''}`} />
           </div>
+        <div className={styles.treasurer}>
           <p className={styles.name}>
             Treasurer: Landon Truong
           </p>
@@ -83,9 +72,7 @@ export default function Home() {
             </div>
         </div>
       </div>
-      <div className="bottomBox">
-        <p className={`bottomText`}>©2025 Security Society at LSU</p>
-      </div>
     </div>
+    
   );
 }
