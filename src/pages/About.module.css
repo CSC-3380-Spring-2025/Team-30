@@ -10,27 +10,33 @@
     font-size: 60px;
     text-align: center;
   }
-  .president span {
+
+.president span{
+    padding-top: 30px;
     color: hsl(0 0% 100% / 0.2);
-    background-image: linear-gradient(90deg, red, blue);
     background-clip: text;
-    -webkit-background-clip: text;
+    background-image: linear-gradient(90deg,red,blue);
     background-size: 0% 100%;
     background-repeat: no-repeat;
-  
-    animation-name: scroll-reveal;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+    animation: scroll-reveal linear forwards;
     animation-timeline: view(y);
-    animation-range: cover 20vh / cover 40vh;
+}
+
+.president h2 span {
+  animation-range: cover 20vh;
+  animation-range-end: cover 30vh;
+}
+
+.president p span {
+  animation-range: cover 22.5vh;
+  animation-range-end: cover 50vh;
+}
+
+@keyframes scroll-reveal {
+  to{ 
+    background-size: 100% 100%;
   }
-  
-  @keyframes scroll-reveal {
-    to {
-      background-size: 100% 100%;
-    }
-  }
-  
+}
 
 .year{
     font-size: 40px;
