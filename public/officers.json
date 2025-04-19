@@ -1,0 +1,26 @@
+[
+  {
+    "role": "President",
+    "name": "Cameron Shortt",
+    "image": "/images/SSLPresident.png",
+    "bio": "Hello, I am Cameron Shortt, a Louisiana State University (LSU) student. My major is computer science, and I have a strong passion for both compiler theory and music, particularly the trumpet. I am a dedicated and analytical thinker who enjoys tackling complex computational problems while also appreciating the artistry of music."
+  },
+  {
+    "role": "Vice President",
+    "name": "Ronald Gibson",
+    "image": "/images/SSLVicePresident.png",
+    "bio": "Hello, I am Ronald Gibson, III, a Louisiana State University (LSU) student. My major is computer science with a concentration in cyber operations. I am a skilled and ambitious self-starter who always strives for high performance and is willing to take on the most challenging tasks."
+  },
+  {
+    "role": "Secretary",
+    "name": "Tai Tran",
+    "image": "/images/SSLSecratary.png",
+    "bio": "Hello, I am Tai Tran, a Louisiana State University (LSU) student. My major is computer science, and my interests lie in IoT security and piano. I am passionate about exploring the vulnerabilities of connected devices and developing secure solutions to protect them. Outside of cybersecurity, I find creativity and discipline in playing the piano."
+  },
+  {
+    "role": "Treasurer",
+    "name": "Landon Truong",
+    "image": "/images/SSLTreasurer.png",
+    "bio": "Hello, I am Landon Truong, a Louisiana State University (LSU) student. My major is computer science, and I am deeply interested in malware prevention and cybersecurity. I am passionate about analyzing and mitigating cyber threats to create safer digital environments. Beyond the world of security, I enjoy the physical and mental challenges of rock climbing."
+  }
+]
