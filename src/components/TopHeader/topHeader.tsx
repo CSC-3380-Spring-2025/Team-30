@@ -1,12 +1,12 @@
-// components/TopHeader.tsx
 import Image from "next/image";
 import HamburgerMenu from "@/components/HamburgerMenu/hamburgerMenu";
 import styles from "./TopHeader.module.css";
+import Link from "next/link"; 
 
 const TopHeader = () => {
   return (
     <div className={styles.topBox}>
-      <a href="/">
+      <Link href="/"> 
         <Image
           src="/ssl-logo.png"
           width={75}
@@ -14,7 +14,7 @@ const TopHeader = () => {
           className={styles.logo}
           alt="Logo"
         />
-      </a>
+      </Link>
       <HamburgerMenu />
     </div>
   );
