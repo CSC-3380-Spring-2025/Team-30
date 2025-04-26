@@ -14,3 +14,8 @@
   width: auto; /* Adjust based on the image size */
   max-height: 100%;
 }
+
+.buttonP {
+  position: absolute;
+  right: 20px;
+}

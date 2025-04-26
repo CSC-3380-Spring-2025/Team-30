@@ -16,6 +16,11 @@ const TopHeader = () => {
         />
       </a>
       <HamburgerMenu />
+      <div className={styles.buttonP}>
+      <a href="/login">
+        <button>Login/Register</button>
+      </a>
+      </div>
     </div>
   );
 };
