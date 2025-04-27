@@ -1,0 +1,38 @@
+VM Manager
+==========
+
+This manages QEMU VMs via a REST API, which is a surprisingly
+hard to find feature in pre-build solutions.
+
+Build
+-----
+
+```
+$ go build .
+```
+
+Run Prod
+--------
+
+```
+$ ./vm-manager -p <port>
+```
+
+e.g.
+
+```
+$ ./vm-manager -p 1701
+```
+
+Run Dev
+-------
+
+- TBD
+
+FOR DEVELOPERS - API
+--------------------
+
+- GET  /vm           : returns JSON blob of started VMs
+- POST /vm/start/:id : starts vm id
+- POST /vm/kill/:id  : stops vm id with `kill -9`
+
