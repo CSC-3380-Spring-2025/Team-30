@@ -8,31 +8,37 @@ Build
 -----
 
 ```
-$ go build .
+$ go install .
 ```
 
 Run Prod
 --------
 
 ```
-$ ./vm-manager -p <port>
+$ vm-manager -p <port>
 ```
 
 e.g.
 
 ```
-$ ./vm-manager -p 1701
+$ vm-manager -p 1701
 ```
 
 Run Dev
 -------
 
-- TBD
+```
+$ cd bootdev
+$ go build .
+$ cd ..
+$ go run .
+```
 
 FOR DEVELOPERS - API
 --------------------
 
 - GET  /vm           : returns JSON blob of started VMs
+- GET  /vm/:id       : returns relevant info for vm id
 - POST /vm/start/:id : starts vm id
 - POST /vm/kill/:id  : stops vm id with `kill -9`
 
