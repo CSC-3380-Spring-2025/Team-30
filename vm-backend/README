@@ -4,41 +4,66 @@ VM Manager
 This manages QEMU VMs via a REST API, which is a surprisingly
 hard to find feature in pre-build solutions.
 
+IMPORTANT WARNING: DO NOT SKIP
+------------------------------
+
+Ensure you are on one of the following platforms.
+This **WILL NOT WORK** if you are not on one of these platforms:
+
+- x86_64-linux-gnu
+- x86_64-linux-musl
+
+(If you know what you're doing and understand the minute differences
+between Linux, macOS, and WSL/MinGW that will cause programs written
+for one platform to fail in incredibly esoteric ways on the others,
+feel free to continue at your own risk, but know this will be my first
+question if we lose points for a nonfunctioning backend.) 
+
+Note that the entire project must be run on this platform for the
+time being.
+
+If you so choose to run this in a virtual machine, please remember that
+you are intentionally nesting likely several virtual machines
+inside of your virtual machine, so you may have to edit
+the configuration to avoid Out-of-Memory errors, etc. that we cannot
+reasonably prevent.  These edits should be obvious and trivial.
+
+The default VM images were chosen for their pure emulated performance,
+not their beauty.  Should you wish to run Kali, that option is provided
+in `virt-heavy.ini`, but expect *long* boot times (>30min without acceleration).
+
 Build
 -----
 
-```
-$ go install .
-```
+Please ensure you have the following programs available and in your path:
+- qemu-system-x86_64
+- qemu-system-i386
+- go
 
-Run Prod
---------
-
-```
-$ vm-manager -p <port>
-```
-
-e.g.
+You may then build vm-manager.
 
 ```
-$ vm-manager -p 1701
-```
-
-Run Dev
--------
-
-```
-$ cd bootdev
 $ go build .
-$ cd ..
-$ go run .
 ```
+
+This has been tested thoroughly on the supported platforms, so if the
+build fails it is likely an issue with your install.
+
+Run
+---
+
+```
+$ vm-manager
+```
+
+vm-manager will fail loudly if something goes wrong, and all of those
+issues are easily solvable and related to a borked install.
 
 FOR DEVELOPERS - API
 --------------------
 
-- GET  /vm           : returns JSON blob of started VMs
-- GET  /vm/:id       : returns relevant info for vm id
-- POST /vm/start/:id : starts vm id
-- POST /vm/kill/:id  : stops vm id with `kill -9`
+- GET  /api/vm           : returns JSON blob of started VMs
+- GET  /api/vm/:id       : returns relevant info for vm id
+- POST /api/vm/start/:id : starts vm id
+- POST /api/vm/kill/:id  : stops vm id with `kill -9`
 
