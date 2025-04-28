@@ -1,24 +1,36 @@
-// import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
-import styles from './About.module.css'
-import { useState } from "react";
+// import HamburgerMenu from "@/components/hamburgerMenu"; // Uncomment if you're using this
+import styles from './About.module.css';
+import { useEffect, useState } from 'react';
+
+interface Officer {
+  role: string;
+  name: string;
+  image: string;
+  bio: string;
+}
 
 export default function Home() {
-  const [isMoving, setIsMoving] = useState(false);
-//theres definetly wayyy better ways to do this but this is the best I can come up with rn with the research i've done
-//gonna have to figure out how to make the text appear as the picture slides
-//its not actively registering that the cursor is still over the proximity of the image so it just slides back before i move the cursor
+  const [officers, setOfficers] = useState<Officer[]>([]);
 
+<<<<<<< HEAD
+=======
+  useEffect(() => {
+    fetch('/officers.json') 
+      .then((res) => res.json())
+      .then((data: Officer[]) => setOfficers(data))
+      .catch((err) => console.error("Failed to load officers data", err));
+  }, []);
+>>>>>>> origin/dev
 
   return (
     <div className={styles.container}>
       <div className="topBox">
-
       </div>
+
       <div className="content">
-        <div className={styles.title}>
-          SSL Officers
-        </div>
+        <div className={styles.title}>SSL Officers</div>
         <div className={styles.year}>2024-2025</div>
+<<<<<<< HEAD
         <div className={styles.president}>
           <div className={styles.pic}>
             <img src="./images/SSLPresident.png" alt="SSL President" className={`${styles.picture} ${isMoving ? styles.animated : ''}`} />
@@ -70,7 +82,35 @@ export default function Home() {
             Hello, I am Landon Truong, a Louisiana State University (LSU) student. My major is computer science, and I am deeply interested in malware prevention and cybersecurity. I am passionate about analyzing and mitigating cyber threats to create safer digital environments. Beyond the world of security, I enjoy the physical and mental challenges of rock climbing.            </p>
             </div>
         </div>
+=======
+
+        {officers.map((officer, index) => (
+          <div key={index}>
+            <div className={styles.pic}>
+              <img
+                src={officer.image}
+                alt={`SSL ${officer.role}`}
+                className={`${styles.picture}`}
+              />
+            </div>
+            <div className={styles[getRoleClassName(officer.role)]}>
+              <h2 className={styles.name}>
+                <span>{officer.role}: {officer.name}</span>
+              </h2>
+              <div className={styles.bioContainer}>
+                <p className={styles.bio}>
+                  <span>{officer.bio}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+>>>>>>> origin/dev
       </div>
     </div>
   );
+}
+
+function getRoleClassName(role: string): string {
+  return role.toLowerCase().replace(/\s/g, '');
 }

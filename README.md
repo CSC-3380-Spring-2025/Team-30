@@ -1,7 +1,7 @@
-🚀 SSL Website Revamp (Team 30)
+SSL Website Revamp (Team 30)
 ============================
 
-👥 Members
+Members
 -------
 
 - Project Manager: [Andrew Dang](https://github.com/theavgandrew)
@@ -15,45 +15,65 @@ About
 
 The SSL website had issues.  We're fixing those issues.
 
-🛠️ Local Development Setup
+Local Development Setup
 ------------------
-📦 Step 1: Clone the Repository
-```git clone https://github.com/your-team/ssl-club-website.git```
-```cd ssl-club-website```
 
-🧱 Step 2: Install Dependencies
-Make sure you have Node.js (v18+) and npm installed.
-```npm install```
+Step 0: Ensure you're on a compatible platform
 
-🐘 Step 3: Set Up PostgreSQL Database
-You need PostgreSQL installed locally.
+- The VM backend has only been tested on the following platforms:
+  - x86_64-linux-gnu
+  - x86_64-linux-musl
+- If you are not on one of these platforms, we cannot guarantee
+  the VM backend will work as intended
 
-✅ If you don’t have it:
-Mac: brew install postgresql
-Ubuntu: sudo apt install postgresql
-Windows: Download installer
+Step 1: Clone the Repository
 
-Once installed, create a local database:
-- ```psql postgres```
-- ```CREATE DATABASE club_db;```
+```
+$ git clone https://github.com/CSC-3380-Spring-2025/Team-30
+$ cd Team-30
+```
 
-🗂️ Step 4: Create a .env File
+Step 2: Install Dependencies
+
+Please ensure you have a functioning nodejs installation.
+Then install frontend dependencies as usual.
+
+```
+$ npm install
+```
+
+Read the vm-backend README carefully for the VM setup,
+and ensure you have a functioning PostgreSQL installation.
+
+Step 3: Set Up PostgreSQL Database
+
+- Create an initial database: `$ psql postgres`
+  - At the resulting prompt: `CREATE DATABASE club_db;`
+
+Step 4: Create a .env File
+
 Create a .env file in the root of the project:
-```DATABASE_URL="postgresql://postgres@localhost:5432/club_db"```
-You can replace postgres with your actual PostgreSQL username.
+```
+# .env
+DATABASE_URL="postgresql://postgres@localhost:5432/club_db"
+```
+You can replace postgres with the PostgreSQL user you created
+during installation.
 
-🔧 Step 5: Set Up Prisma
+Step 5: Set Up Prisma
+
 Prisma is our ORM for managing the database schema.
-1. Generate Prisma Client
-    ```npx prisma generate```
-2. Apply Migrations (Create Tables in the DB)
-    ```npx prisma migrate dev --name init```
-     This will read the schema in prisma/schema.prisma and apply it to your local DB.
-3. (Optional) View and Edit Data in a GUI
-    ```npx prisma studio```
+1. Generate Prisma Client: `$ npx prisma generate`
+2. Apply Migrations (Create Tables in the DB): `$ npx prisma migrate dev --name init`
+   - This will read the schema in prisma/schema.prisma and apply it to your local DB.
+3. (Optional) View and Edit Data in a GUI: `$ npx prisma studio`
+   - This should not be necessary unless something has gone horribly wrong
 
-💻 Step 6: Start the Dev Server
-    ```npm run dev```
+Step 6: Start the Dev Server
+
+```
+$ npm run dev
+```
 
 The project should now be running on http://localhost:3000 (or another port if configured differently).
 
