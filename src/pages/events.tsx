@@ -11,7 +11,10 @@ function Events() {
                 style={{
                     width: "80%",
                     margin: "0 auto",
-                    padding: "20px"
+                    padding: "20px",
+                    color: "white",
+                    backgroundColor: "black",
+                    boxShadow: "0 0 12px rgba(34, 34, 34, 0.6), 0 0 24px rgba(13, 13, 13, 0.2)" 
                 }}
             >
                 <FullCalendar
@@ -29,7 +32,8 @@ function Events() {
                 style={{
                     margin: "20px 0",
                     display: "flex",
-                    justifyContent: "center"
+                    justifyContent: "center",
+                    
                 }}
             >
                 <Button text="Create Event" />

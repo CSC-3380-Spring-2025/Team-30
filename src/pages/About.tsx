@@ -27,7 +27,6 @@ export default function Home() {
       <div className="content">
         <div className={styles.title}>SSL Officers</div>
         <div className={styles.year}>2024-2025</div>
-
         {officers.map((officer, index) => (
           <div key={index}>
             <div className={styles.pic}>
