@@ -25,7 +25,7 @@ export default function Home() {
 
     if (challengeData[challenge].sys === "vm-manager") {
         return (
-		<Link src="/vm/vnc.html" />
+		<Link href="/vm/vnc.html" />
         );
     }
 
