@@ -32,27 +32,6 @@
     /* border-radius: 50%;    For rectangle images but I currently only have circles */
     object-fit: cover;    
     /* border: 2px solid #333;  */
-    transition: transform 0.3s ease;
-    transition-delay: 0s;
-  }
-
-  .picture:hover {
-    animation: slideLeftAndHold 10s ease forwards;
-  }
-
-  @keyframes slideLeftAndHold {
-    0% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(-500px);
-    }
-    75% {
-      transform: translateX(-500px); /* Hold position */
-    }
-    100% {
-      transform: translateX(0);
-    }
   }
 
  .name{
