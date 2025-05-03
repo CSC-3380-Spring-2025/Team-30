@@ -12,8 +12,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <div className="topBox">
-      </div>
       <div className="content">
         <div className={styles.title}>
           Security Society at LSU
@@ -36,23 +34,19 @@ export default function Home() {
                 minLength={6}
                 className={styles.loginInput}
               />
-
-        <div className ={styles.registerText}>
-          Don't have an account set up? <a href="/register">Register here!</a>
-        </div>
               <Button
                 text="Log In"
                 type="submit"
               >
               </Button>
+
+          <div className ={styles.registerText}>
+            Don't have an account set up? <a href="/register">Register here.</a>
+        </div>
             </form>
       </div>
       <img src="./SSLIcon.png" alt="SSL Icon" className={styles.sslicon} />
     </div>
-
-    <div className="bottomBox">
-        <p className={styles.bottomText}>©2025 Security Society at LSU</p> 
-      </div>
     </div>
   );
 }

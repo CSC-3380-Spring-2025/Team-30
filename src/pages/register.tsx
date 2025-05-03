@@ -1,6 +1,6 @@
 // basically a copy of the login page
 import Button from '@/components/Button/button';
-import styles from './Login.module.css'
+import styles from './register.module.css'
 import { useState } from "react";
 
 export default function Home() {
@@ -12,14 +12,12 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <div className="topBox">
-      </div>
       <div className="content">
         <div className={styles.title}>
           Security Society at LSU
         </div>
         <div className={styles.title}>
-          Log in
+          Register
         </div>
         <div className={styles.loginRight}>
             <form className={styles.loginBox}>
