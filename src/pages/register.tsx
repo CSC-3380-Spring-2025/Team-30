@@ -1,5 +1,5 @@
 // basically a copy of the login page
-
+import Button from '@/components/Button/button';
 import styles from './Login.module.css'
 import { useState } from "react";
 
@@ -43,9 +43,11 @@ export default function Home() {
                 minLength={6}
                 className={styles.loginInput}
               />
-              <button className={styles.loginButton} type="submit">
-                Log In
-              </button>
+              <Button
+                text="Log In"
+                type="submit"
+              >
+              </Button>
             </form>
       </div>
       <img src="./SSLIcon.png" alt="SSL Icon" className={styles.sslicon} />

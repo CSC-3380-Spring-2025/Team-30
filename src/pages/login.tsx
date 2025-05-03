@@ -1,4 +1,5 @@
 // import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
+import Button from '@/components/Button/button';
 import styles from './Login.module.css'
 import { useState } from "react";
 
@@ -39,9 +40,11 @@ export default function Home() {
         <div className ={styles.registerText}>
           Don't have an account set up? <a href="/register">Register here!</a>
         </div>
-              <button className={styles.loginButton} type="submit">
-                Log In
-              </button>
+              <Button
+                text="Log In"
+                type="submit"
+              >
+              </Button>
             </form>
       </div>
       <img src="./SSLIcon.png" alt="SSL Icon" className={styles.sslicon} />
