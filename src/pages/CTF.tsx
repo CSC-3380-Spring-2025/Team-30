@@ -40,10 +40,15 @@ export default function Home() {
                         <div className={styles.ctfhintHidden}>
                         Hint 1 Appears When User Hovers Over It. </div>
                         </div>
-                        <div className={styles.submitButtonWrapper}>
+                        <div className={styles.terminalButtonWrapper}>
+                    <a href="/vm/vnc.html" target="_blank" rel="noopener noreferrer">
+                        <Button text="Launch Terminal" />
+                    </a>
+                    </div>
+                    <div className={styles.submitButtonWrapper}>
                             <Button text="Submit" />
                         </div>
-                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

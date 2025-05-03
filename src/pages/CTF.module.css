@@ -94,6 +94,11 @@
 }
 
 .submitButtonWrapper {
-  margin-top: 200px;
-  margin-left: 150px;
+  margin-top: 30px;
+  margin-left: 60px;
+}
+
+.terminalButtonWrapper {
+  margin-top: 30px;
+  margin-left: 60px;
 }
