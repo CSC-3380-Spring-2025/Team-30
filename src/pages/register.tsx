@@ -42,7 +42,7 @@ export default function Home() {
                 className={styles.loginInput}
               />
               <Button
-                text="Log In"
+                text="Register"
                 type="submit"
               >
               </Button>
