@@ -1,6 +1,6 @@
-// basically a copy of the login page
+// import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
 import Button from '@/components/Button/button';
-import styles from './register.module.css'
+import styles from './Login.module.css'
 import { useState } from "react";
 
 export default function Home() {
@@ -17,35 +17,32 @@ export default function Home() {
           Security Society at LSU
         </div>
         <div className={styles.title}>
-          Register
+          Log in
         </div>
         <div className={styles.loginRight}>
             <form className={styles.loginBox}>
               <input
-                placeholder="Enter your email here."
+                placeholder="Email"
                 type="email"
                 required
                 className={styles.loginInput}
               />
               <input
-                placeholder="Enter your password here."
-                type="password"
-                required
-                minLength={6}
-                className={styles.loginInput}
-              />
-            <input
-                placeholder="Confirm your password."
+                placeholder="Password"
                 type="password"
                 required
                 minLength={6}
                 className={styles.loginInput}
               />
               <Button
-                text="Register"
+                text="Log In"
                 type="submit"
               >
               </Button>
+
+          <div className ={styles.registerText}>
+            Don't have an account set up? <a href="/register">Register here.</a>
+        </div>
             </form>
       </div>
       <img src="./SSLIcon.png" alt="SSL Icon" className={styles.sslicon} />
