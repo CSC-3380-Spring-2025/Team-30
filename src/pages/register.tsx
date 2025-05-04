@@ -1,6 +1,6 @@
 // basically a copy of the login page
-
-import styles from './Login.module.css'
+import Button from '@/components/Button/button';
+import styles from './register.module.css'
 import { useState } from "react";
 
 export default function Home() {
@@ -12,14 +12,12 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <div className="topBox">
-      </div>
       <div className="content">
         <div className={styles.title}>
           Security Society at LSU
         </div>
         <div className={styles.title}>
-          Log in
+          Register
         </div>
         <div className={styles.loginRight}>
             <form className={styles.loginBox}>
@@ -43,9 +41,11 @@ export default function Home() {
                 minLength={6}
                 className={styles.loginInput}
               />
-              <button className={styles.loginButton} type="submit">
-                Log In
-              </button>
+              <Button
+                text="Register"
+                type="submit"
+              >
+              </Button>
             </form>
       </div>
       <img src="./SSLIcon.png" alt="SSL Icon" className={styles.sslicon} />

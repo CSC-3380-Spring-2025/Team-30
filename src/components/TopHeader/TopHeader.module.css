@@ -7,6 +7,9 @@
   width: 100vw; /* Only the content width */
   padding-top: 5px;
   flex-shrink: 0; /* Prevent shrinking */
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .logo {

@@ -1,4 +1,5 @@
 // import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
+import Button from '@/components/Button/button';
 import styles from './Login.module.css'
 import { useState } from "react";
 
@@ -11,8 +12,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <div className="topBox">
-      </div>
       <div className="content">
         <div className={styles.title}>
           Security Society at LSU
@@ -35,21 +34,19 @@ export default function Home() {
                 minLength={6}
                 className={styles.loginInput}
               />
+              <Button
+                text="Log In"
+                type="submit"
+              >
+              </Button>
 
-        <div className ={styles.registerText}>
-          Don't have an account set up? <a href="/register">Register here!</a>
+          <div className ={styles.registerText}>
+            Don't have an account set up? <a href="/register">Register here.</a>
         </div>
-              <button className={styles.loginButton} type="submit">
-                Log In
-              </button>
             </form>
       </div>
       <img src="./SSLIcon.png" alt="SSL Icon" className={styles.sslicon} />
     </div>
-
-    <div className="bottomBox">
-        <p className={styles.bottomText}>©2025 Security Society at LSU</p> 
-      </div>
     </div>
   );
 }
