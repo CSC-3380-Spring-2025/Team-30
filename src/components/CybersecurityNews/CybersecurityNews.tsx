@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import styles from "./CybersecurityNews.module.css";
 import { vt323 } from "../../utils/fonts";
+import Image from "next/image"; // Import the next/image component for optimized image loading
 
 interface Article {
   title: string;
   description: string;
   url: string;
   urlToImage: string | null;
+}
+
+interface NewsResponse {
+  articles: Article[];
 }
 
 export default function CybersecurityNews() {
@@ -20,7 +25,7 @@ export default function CybersecurityNews() {
         const response = await fetch("/api/cybersecurity-news");
         if (!response.ok) throw new Error("Failed to fetch news");
 
-        const data = await response.json();
+        const data = (await response.json()) as NewsResponse; 
 
         const filteredArticles = data.articles
           .filter((article: Article) => 
@@ -33,13 +38,14 @@ export default function CybersecurityNews() {
         setArticles(filteredArticles);
       } catch (err) {
         setError("Error fetching cybersecurity news");
+        console.error(err); 
       } finally {
         setLoading(false);
       }
     };
 
-    fetchNews();
-  }, []);
+    void fetchNews(); 
+  }, []); 
 
   if (loading) return (
     <div className={`${styles.loading} ${vt323.className}`}>
@@ -68,11 +74,12 @@ export default function CybersecurityNews() {
           <article key={index} className={styles.news_card}>
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div className={styles.image_container}>
-                <img
-                  src={article.urlToImage!}
+                <Image
+                  src={article.urlToImage ?? '/default-image.jpg'} // Fallback image if urlToImage is null
                   alt={article.title}
                   className={styles.news_image}
-                  loading="lazy"
+                  width={500} 
+                  height={300} 
                 />
                 <div className={styles.image_overlay}>
                   <p>{article.description}</p>

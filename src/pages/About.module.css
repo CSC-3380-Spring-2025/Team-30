@@ -17,6 +17,7 @@
   margin-top: 10px;
 }
 
+<<<<<<< HEAD
 .content {
   width: 90%;
   max-width: 1200px;
@@ -35,6 +36,22 @@
   flex-direction: column;
   align-items: center;
 }
+=======
+.pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .picture {
+    width: 300px;
+    height: 300px;
+    /* border-radius: 50%;    For rectangle images but I currently only have circles */
+    object-fit: cover;    
+    /* border: 2px solid #333;  */
+  }
+>>>>>>> origin/dev
 
 .picWrapper {
   position: relative;
@@ -53,6 +70,7 @@
   position: relative;
 }
 
+<<<<<<< HEAD
 .slide {
   transform: translateX(-100%);
 }
@@ -107,3 +125,13 @@
 .officer:hover .roleLabel {
   opacity: 0;
 }
+=======
+ .bioContainer{
+    width: 800px;
+    height: 500px;
+    padding: 20px;
+    box-sizing: border-box;   
+    overflow: auto;           
+    margin: 20px auto; 
+ }
+>>>>>>> origin/dev

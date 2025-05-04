@@ -21,9 +21,9 @@ const HamburgerMenu = () => {
       </div>
       <div className={`${styles.menuContent} ${isOpen ? styles.active : ""}`}>
         <ul className={vt323.className}>
-          <li><a href="/">Home</a></li>
-          <li><a href="/CTFS">CTFs</a></li>
-          <li><a href="/events">Events</a></li>
+          <li><Link href="/">Home</Link></li> 
+          <li><Link href="/CTFS">CTFs</Link></li> 
+          <li><Link href="/events">Events</Link></li>
           <li><a href="#">Forum</a></li>
           <li><Link href="/About">About</Link></li>
         </ul>

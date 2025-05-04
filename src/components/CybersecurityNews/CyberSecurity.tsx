@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./CybersecurityNews.module.css";
 import { vt323 } from "../../utils/fonts";
+import Image from 'next/image';
 
 interface Article {
   title: string;
@@ -20,10 +21,10 @@ export default function CybersecurityNews() {
         const response = await fetch("/api/cybersecurity-news");
         if (!response.ok) throw new Error("Failed to fetch news");
 
-        const data = await response.json();
+        const data = (await response.json()) as { articles: Article[] };
 
         const filteredArticles = data.articles
-          .filter((article: Article) => 
+          .filter((article: Article) =>
             article.urlToImage &&
             article.urlToImage.trim() !== "" &&
             /\.(jpg|jpeg|png|gif|webp)$/i.test(article.urlToImage)
@@ -31,14 +32,14 @@ export default function CybersecurityNews() {
           .slice(0, 3);
 
         setArticles(filteredArticles);
-      } catch (err) {
+      } catch {
         setError("Error fetching cybersecurity news");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchNews();
+    void fetchNews();
   }, []);
 
   if (loading) return (
@@ -68,10 +69,12 @@ export default function CybersecurityNews() {
           <article key={index} className={styles.news_card}>
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div className={styles.image_container}>
-                <img
-                  src={article.urlToImage!}
+                <Image
+                  src={article.urlToImage ?? '/default-image.jpg'}  // Use a fallback
                   alt={article.title}
                   className={styles.news_image}
+                  width={600}
+                  height={400}
                   loading="lazy"
                 />
                 <div className={styles.image_overlay}>
