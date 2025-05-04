@@ -1,4 +1,4 @@
-import styles from './Login.module.css'
+import styles from '../styles/register.module.css';
 import { useState } from "react";
 
 export default function Register() {
