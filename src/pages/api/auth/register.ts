@@ -11,6 +11,15 @@ export default async function handler(
   if (req.method === "POST") {
     const { email, password, role } = req.body;
 
+    // Check if the user already exists
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (existingUser) {
+      return res.status(400).json({ error: "User already exists" });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     try {
@@ -18,12 +27,14 @@ export default async function handler(
         data: {
           email,
           password: hashedPassword,
-          role: role || "member", // Default to "member"
+          role: role || "member", // Default to "member" if no role is provided
         },
       });
+
       res.status(201).json(user);
     } catch (error) {
-      res.status(500).json({ error: "User already exists" });
+      console.error(error);
+      res.status(500).json({ error: "Something went wrong" });
     }
   } else {
     res.status(405).json({ message: "Method not allowed" });
