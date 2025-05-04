@@ -38,7 +38,8 @@ func memToArg(mem int) string {
 }
 
 func bootVM(virt vm) {
-    cmd := exec.Command("qemu-system-" + virt.Arch,
+    cmd := exec.Command("websockify", "5900", "--",
+	                "qemu-system-" + virt.Arch,
                         "-m", memToArg(virt.Memory),
 	                "-display", "vnc=127.0.0.1:0",
                         "-accel", virt.Accel,
@@ -82,7 +83,7 @@ func main() {
         cfg = ini.Empty()
     }
 
-    def := initVM("default", cfg)
+    def := initVM("tomsrtbt", cfg)
 
     bootVM(def)
 }
