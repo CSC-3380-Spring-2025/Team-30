@@ -1,14 +1,9 @@
-import { VT323 } from "next/font/google";
+import Image from "next/image";
 import styles from "./CTF.module.css"
 import Button from "@/components/Button/button";
 
 
 // import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
-
-const vt323 = VT323({
-    weight: '400',
-    subsets: ['latin'],
-})
 
 export default function Home() {
     return (
@@ -21,7 +16,13 @@ export default function Home() {
                     Capture The Flag
                 </div>
                 <div className={styles.ctflisting}>
-                    <img src="./CTFIcon.png" alt="CTF Icon" className={styles.ctficon} />
+                    <Image
+                        src="/CTFIcon.png"
+                        alt="CTF Icon"
+                        className={styles.ctficon}
+                        width={100}
+                        height={100}
+                    />
                     <div className={styles.ctfnumber}>
                         Task 0
                     </div>

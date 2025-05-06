@@ -1,35 +1,26 @@
-import { VT323 } from "next/font/google";
 import { useRouter } from "next/router";
-import styles from "./CTFS.module.css";
-import Script from "next/script"
-import Link from "next/link"
+import Link from "next/link";
+import challenges from "./challenges.json";
 
-
-const vt323 = VT323({
-    weight: '400',
-    subsets: ['latin'],
-});
+interface ChallengeEntry {
+  sys: string;
+}
 
 export default function Home() {
-    const router = useRouter();
-    const { query } = router;
+  const { query } = useRouter();
 
-    const challenge = query.n;
-    const challengeData = require("./challenges.json");
+  const challenge = Array.isArray(query.n) ? query.n[0] : query.n ?? "";
 
-    if (! challengeData[challenge]) {
-	    return (
-		    <p>This CTF does not exist</p>
-	    );
-    }
+  const challengeData: Partial<Record<string, ChallengeEntry>> = challenges;
 
-    if (challengeData[challenge].sys === "vm-manager") {
-        return (
-		<Link href="/vm/vnc.html" />
-        );
-    }
+  const entry = challengeData[challenge];
+  if (!entry) {
+    return <p>This CTF does not exist</p>;
+  }
 
-    return (
-	    <p>Something went wrong.</p>
-    );
+  if (entry.sys === "vm-manager") {
+    return <Link href="/vm/vnc.html">Launch VM Manager</Link>;
+  }
+
+  return <p>Something went wrong.</p>;
 }

@@ -1,15 +1,25 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction";
+import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import { useState, useEffect } from "react";
 import Button from "@/components/Button/button";
 
-type CalendarEvent = {
+interface CalendarEvent {
   title: string;
   start: string;
   end: string;
-};
+}
+
+interface CreatedEvent {
+  title: string;
+  event_date: string;
+  end_date: string;
+}
+
+interface ApiError {
+  message: string;
+}
 
 function Events() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
@@ -17,19 +27,19 @@ function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("/api/events"); // API route for events
-        const data = await response.json();
-        console.log("Fetched events:", data);  // Log fetched events
+        const response = await fetch("/api/events");
+        const data = await response.json() as CalendarEvent[];
+        console.log("Fetched events:", data);
         setEvents(data);
       } catch (error) {
         console.error("Error fetching events:", error);
       }
     };
 
-    fetchEvents();
+    void fetchEvents();
   }, []);
 
-  const handleDateClick = async (arg: any) => {
+  const handleDateClick = async (arg: DateClickArg) => {
     const title = prompt("Enter event title:");
     if (!title) return;
 
@@ -68,13 +78,13 @@ function Events() {
       });
 
       if (response.ok) {
-        const created = await response.json();
+        const created = await response.json() as CreatedEvent;
         setEvents((prev) => [
           ...prev,
           { title: created.title, start: created.event_date, end: created.end_date },
         ]);
       } else {
-        const errorData = await response.json();
+        const errorData = await response.json() as ApiError;
         alert(`Error: ${errorData.message}`);
       }
     } catch (error) {
@@ -94,8 +104,8 @@ function Events() {
             center: "title",
             end: "timeGridDay,timeGridWeek,dayGridMonth",
           }}
-          events={events} // Pass events to FullCalendar
-          dateClick={handleDateClick} // Handle date click to create new event
+          events={events}
+          dateClick={(arg) => void handleDateClick(arg)}
         />
       </div>
 

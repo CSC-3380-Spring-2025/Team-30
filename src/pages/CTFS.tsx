@@ -1,14 +1,14 @@
 import { VT323 } from "next/font/google";
-import styles from "./CTFS.module.css"
+import styles from "./CTFS.module.css";
 import Link from "next/link";
-
+import Image from "next/image";
 
 // import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
 
 const vt323 = VT323({
     weight: '400',
     subsets: ['latin'],
-})
+});
 
 export default function Home() {
     return (
@@ -21,9 +21,15 @@ export default function Home() {
                     Capture The Flag
                 </div>
                 <div className={styles.ctflisting}>
-                <Link href="/CTF">
-                    <img src="./CTFIcon.png" alt="CTF Icon" className={styles.ctficon} />
-                </Link>
+                    <Link href="/CTF">
+                        <Image
+                            src="/CTFIcon.png"
+                            alt="CTF Icon"
+                            className={styles.ctficon}
+                            width={64}
+                            height={64}
+                        />
+                    </Link>
                     <div className={styles.ctfnumber}>
                         Task 0
                     </div>
@@ -37,9 +43,15 @@ export default function Home() {
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
-                <Link href="/CTF">
-                    <img src="./CTFIcon.png" alt="CTF Icon" className={styles.ctficon} />
-                </Link>
+                    <Link href="/CTF">
+                        <Image
+                            src="/CTFIcon.png"
+                            alt="CTF Icon"
+                            className={styles.ctficon}
+                            width={64}
+                            height={64}
+                        />
+                    </Link>
                     <div className={styles.ctfnumber}>
                         Task 1
                     </div>
@@ -53,11 +65,17 @@ export default function Home() {
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
-                <Link href="/CTF">
-                    <img src="./CTFIcon.png" alt="CTF Icon" className={styles.ctficon} />
-                </Link>
+                    <Link href="/CTF">
+                        <Image
+                            src="/CTFIcon.png"
+                            alt="CTF Icon"
+                            className={styles.ctficon}
+                            width={64}
+                            height={64}
+                        />
+                    </Link>
                     <div className={styles.ctfnumber}>
-                        Task
+                        Task 2
                     </div>
                     <div className={styles.ctfname}>
                         Backup Fail
@@ -69,9 +87,15 @@ export default function Home() {
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
-                <Link href="/CTF">
-                    <img src="./CTFIcon.png" alt="CTF Icon" className={styles.ctficon} />
-                </Link>
+                    <Link href="/CTF">
+                        <Image
+                            src="/CTFIcon.png"
+                            alt="CTF Icon"
+                            className={styles.ctficon}
+                            width={64}
+                            height={64}
+                        />
+                    </Link>
                     <div className={styles.ctfnumber}>
                         Task 3
                     </div>
@@ -85,9 +109,15 @@ export default function Home() {
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
-                <Link href="/CTF">
-                    <img src="./CTFIcon.png" alt="CTF Icon" className={styles.ctficon} />
-                </Link>
+                    <Link href="/CTF">
+                        <Image
+                            src="/CTFIcon.png"
+                            alt="CTF Icon"
+                            className={styles.ctficon}
+                            width={64}
+                            height={64}
+                        />
+                    </Link>
                     <div className={styles.ctfnumber}>
                         Task 4
                     </div>
@@ -96,14 +126,20 @@ export default function Home() {
                     </div>
                     <div className={styles.desccontainer}>
                         <div className={styles.ctfdesc}>
-                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
+                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User AnIdea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
                         </div>
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
-                <Link href="/CTF">
-                    <img src="./CTFIcon.png" alt="CTF Icon" className={styles.ctficon} />
-                </Link>
+                    <Link href="/CTF">
+                        <Image
+                            src="/CTFIcon.png"
+                            alt="CTF Icon"
+                            className={styles.ctficon}
+                            width={64}
+                            height={64}
+                        />
+                    </Link>
                     <div className={styles.ctfnumber}>
                         Task 5
                     </div>
@@ -112,14 +148,20 @@ export default function Home() {
                     </div>
                     <div className={styles.desccontainer}>
                         <div className={styles.ctfdesc}>
-                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
+                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An IdeaOfWhatIt’sAboutBeforeTheyClickTheIconThatWillThenTakeThemToTheIndividualCTFPage.
                         </div>
                     </div>
                 </div>
                 <div className={styles.ctflisting}>
-                <Link href="/CTF">
-                    <img src="./CTFIcon.png" alt="CTF Icon" className={styles.ctficon} />
-                </Link>
+                    <Link href="/CTF">
+                        <Image
+                            src="/CTFIcon.png"
+                            alt="CTF Icon"
+                            className={styles.ctficon}
+                            width={64}
+                            height={64}
+                        />
+                    </Link>
                     <div className={styles.ctfnumber}>
                         Task 6
                     </div>
@@ -128,7 +170,7 @@ export default function Home() {
                     </div>
                     <div className={styles.desccontainer}>
                         <div className={styles.ctfdesc}>
-                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give The User An Idea Of What It’s About Before They Click The Icon That Will Then Take Them To The Individual CTF Page.
+                            Task Description Here For The Tasks, It Will Just Be A Brief Explanation To Give TheUserAnIdeaOfWhatIt’sAboutBeforeTheyClickTheIconThatWillThenTakeThemToTheIndividualCTFPage.
                         </div>
                     </div>
                 </div>

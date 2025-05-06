@@ -17,9 +17,9 @@ const TopHeader = () => {
       </Link>
       <HamburgerMenu />
       <div className={styles.buttonP}>
-      <a href="/login">
-        <button>Login/Register</button>
-      </a>
+        <Link href="/login">
+          <button>Login/Register</button>
+        </Link>
       </div>
     </div>
   );
