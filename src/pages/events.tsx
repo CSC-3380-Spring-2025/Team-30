@@ -3,13 +3,20 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { useState, useEffect } from "react";
+import { jwtDecode } from 'jwt-decode';
 import Button from "@/components/Button/button";
 
 type CalendarEvent = {
-  id: string;  // Change id type to string
+  id: string;
   title: string;
   start: string;
   end: string;
+};
+
+type DecodedToken = {
+  email: string;
+  role: string;
+  exp: number;
 };
 
 function Events() {
@@ -21,20 +28,34 @@ function Events() {
     startTime: "",
     duration: "",
   });
+  const [isOfficer, setIsOfficer] = useState(false);
+
+  // Decode JWT and check role
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decoded: DecodedToken = jwtDecode(token);
+        console.log(decoded); // Check the decoded token to ensure the role is present
+        if (decoded.role === "officer") {
+          setIsOfficer(true);
+        }
+      } catch (error) {
+        console.error("Invalid token:", error);
+      }
+    }
+  }, []);
+  
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const response = await fetch("/api/events");
         const data = await response.json();
-        console.log("Fetched events:", data);
-
-        // Format the events to ensure 'id' is a string
         const formattedEvents = data.map((event: any) => ({
           ...event,
-          id: event.id.toString(),  // Ensure id is a string
+          id: event.id.toString(),
         }));
-
         setEvents(formattedEvents);
       } catch (error) {
         console.error("Error fetching events:", error);
@@ -76,17 +97,26 @@ function Events() {
 
     try {
       const response = await fetch("/api/events", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newEvent),
+        method: "POST", // or DELETE
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "x-user-role": isOfficer ? "officer" : "member", // or just "officer"
+        },
+        body: JSON.stringify({
+          title: newEvent.title,
+          start: newEvent.start,
+          end: newEvent.end,
+        }),
       });
+      
 
       if (response.ok) {
         const created = await response.json();
         setEvents((prev) => [
           ...prev,
           {
-            id: created.id.toString(),  // Ensure id is a string
+            id: created.id.toString(),
             title: created.title,
             start: created.event_date,
             end: created.end_date,
@@ -103,25 +133,27 @@ function Events() {
       alert("An error occurred while creating the event.");
     }
   };
-
   const handleDeleteEvent = async (eventId: string) => {
     try {
       const response = await fetch("/api/events", {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: eventId }),  // sending id as string
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "x-user-role": isOfficer ? "officer" : "member",
+        },
+        body: JSON.stringify({ id: eventId }), // Updated here
       });
   
       if (response.ok) {
-        // Re-fetch events to reflect the deletion
         const updatedEventsResponse = await fetch("/api/events");
         const updatedEventsData = await updatedEventsResponse.json();
-  
-        // Update the state with the updated list of events
-        setEvents(updatedEventsData.map((event: any) => ({
-          ...event,
-          id: event.id.toString(),  // Ensure id is a string
-        })));
+        setEvents(
+          updatedEventsData.map((event: any) => ({
+            ...event,
+            id: event.id.toString(),
+          }))
+        );
       } else {
         const errorData = await response.json();
         alert(`Error: ${errorData.message}`);
@@ -135,45 +167,47 @@ function Events() {
   return (
     <>
       <div style={{ width: "80%", margin: "0 auto", padding: "20px" }}>
-      <FullCalendar
-  plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
-  initialView="dayGridMonth"
-  headerToolbar={{
-    start: "prev,next",
-    center: "title",
-    end: "timeGridDay,timeGridWeek,dayGridMonth",
-  }}
-  events={events} // This now works since `id` is a string
-  eventContent={({ event }) => (
-    <div>
-      <span
-        style={{
-          backgroundColor: 'lightblue',  // Light blue background
-          color: 'black',                // Black text color
-          padding: '2px 5px',            // Padding for some spacing around the text
-          borderRadius: '5px',           // Rounded corners for the background
-        }}
-      >
-        {event.title}
-      </span>
-      <button
-        onClick={() => handleDeleteEvent(event.id)}
-        style={{ marginLeft: "10px", color: "red" }}
-      >
-        Delete
-      </button>
-    </div>
-  )}
-/>
-
-
+        <FullCalendar
+          plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
+          initialView="dayGridMonth"
+          headerToolbar={{
+            start: "prev,next",
+            center: "title",
+            end: "timeGridDay,timeGridWeek,dayGridMonth",
+          }}
+          events={events}
+          eventContent={({ event }) => (
+            <div>
+              <span
+                style={{
+                  backgroundColor: "lightblue",
+                  color: "black",
+                  padding: "2px 5px",
+                  borderRadius: "5px",
+                }}
+              >
+                {event.title}
+              </span>
+              {isOfficer && (
+                <button
+                  onClick={() => handleDeleteEvent(event.id)}
+                  style={{ marginLeft: "10px", color: "red" }}
+                >
+                  Delete
+                </button>
+              )}
+            </div>
+          )}
+        />
       </div>
 
-      <div className="my-6 flex justify-center">
-        <div onClick={() => setShowModal(true)}>
-          <Button text="Create Event" />
+      {isOfficer && (
+        <div className="my-6 flex justify-center">
+          <div onClick={() => setShowModal(true)}>
+            <Button text="Create Event" />
+          </div>
         </div>
-      </div>
+      )}
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
