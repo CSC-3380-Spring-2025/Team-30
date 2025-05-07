@@ -53,17 +53,15 @@ Run
 ---
 
 ```
-$ vm-manager
+$ ./vm-manager
 ```
 
-vm-manager will fail loudly if something goes wrong, and all of those
-issues are easily solvable and related to a borked install.
+vm-manager will probably appear to not work for unknowable reasons if your
+install is borked.  Check your install.
 
 FOR DEVELOPERS - API
 --------------------
 
-- GET  /api/vm           : returns JSON blob of started VMs
-- GET  /api/vm/:id       : returns relevant info for vm id
-- POST /api/vm/start/:id : starts vm id
-- POST /api/vm/kill/:id  : stops vm id with `kill -9`
+- GET /api/vm/create/:id : starts vm id
+- GET /api/vm/kill/:id   : stops vm id with sigterm
 
