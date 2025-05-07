@@ -55,7 +55,40 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } catch (error) {
       res.status(500).json({ message: "Error creating event", error });
     }
-  } else {
+  } else if (req.method === "DELETE") {
+    const { id } = req.body;
+  
+    if (!id) {
+      return res.status(400).json({ message: "Event ID is required" });
+    }
+  
+    console.log("Attempting to delete event with ID:", id);  // Log the ID
+  
+    try {
+      // First, check if the event exists
+      const event = await prisma.event.findUnique({
+        where: { id: parseInt(id) },
+      });
+  
+      if (!event) {
+        // If the event doesn't exist, return a 404 error
+        return res.status(404).json({ message: "Event not found" });
+      }
+  
+      // If the event exists, proceed with deletion
+      const deletedEvent = await prisma.event.delete({
+        where: { id: parseInt(id) },
+      });
+  
+      console.log("Deleted event:", deletedEvent);  // Log the deleted event
+      res.status(200).json(deletedEvent);
+    } catch (error) {
+      console.error("Error deleting event:", error);  // Log the error
+      res.status(500).json({ message: "Error deleting event", error });
+    }
+  }
+  
+ else {
     res.status(405).json({ message: "Method not allowed" });
   }
 }
