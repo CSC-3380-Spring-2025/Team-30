@@ -3,10 +3,12 @@ package main
 import (
     "net/http"
     "os/exec"
+    "os"
     "strconv"
-    //"fmt"
+    "fmt"
     "math/rand/v2"
     "sync"
+    "time"
 
     "github.com/gin-gonic/gin" // Makes building a REST API easier
     "gopkg.in/ini.v1"          // For reading QEMU parameters
@@ -14,16 +16,23 @@ import (
 )
 import . "vm-manager/bootdev"
 
+type vmBlob struct {
+    Name string
+    ID   string
+    Port int
+}
+
 type vm struct {
     Name       string
     BootDevice BootDev
     Arch       string
     Memory     int
     Accel      string
-
-    // for http get/post
-    ID         string
     Port       int
+
+    Process    *exec.Cmd
+
+    Blob       vmBlob
 }
 
 type vmList struct {
@@ -51,7 +60,19 @@ func memToArg(mem int) string {
     }
 }
 
-func bootVM(virt vm) {
+func selectPort() int {
+    port := rand.IntN(3000) + 5900
+
+    for _, virt := range vms.List {
+        if virt.Port == port {
+            return selectPort()
+        }
+    }
+
+    return port
+}
+
+func makeVMProcess(virt vm) *exec.Cmd {
     portnum := virt.Port - 5900
     port := strconv.Itoa(portnum)
 
@@ -60,7 +81,21 @@ func bootVM(virt vm) {
 	                "-display", "vnc=127.0.0.1:" + port,
                         "-accel", virt.Accel,
 			virt.BootDevice.Arg(), virt.BootDevice.File())
-    cmd.Run()
+
+    return cmd
+}
+
+func bootVM(virt vm) {
+    err := virt.Process.Start()
+    if err != nil {
+        fmt.Fprintln(os.Stderr, err)
+    }
+
+    <-time.After(1 * time.Minute)
+    err = virt.Process.Process.Kill()
+    if err != nil {
+        fmt.Fprintln(os.Stderr, err)
+    }
 }
 
 func initVM(id string) vm {
@@ -81,6 +116,7 @@ func initVM(id string) vm {
         Arch: s.Key("arch").In("x86_64", []string{"x86_64", "i386"}),
         Memory: s.Key("memory").RangeInt(1024, 256, 65536),
         Accel: s.Key("accel").In("tcg", []string{"tcg", "kvm", "xen", "nvmm"}),
+        Port: selectPort(),
     }
 
     switch {
@@ -94,14 +130,10 @@ func initVM(id string) vm {
         virt.BootDevice = CDROM(imgPath + "kali.iso")
     }
 
-    virt.ID = uuid.NewString()
-    virt.Port = rand.IntN(3000) + 5900
+    virt.Blob = vmBlob{ Name: id, ID: uuid.NewString(), Port: virt.Port }
+    virt.Process = makeVMProcess(virt)
 
     return virt
-}
-
-func getStarted(c *gin.Context) {
-    c.IndentedJSON(http.StatusOK, vms.List)
 }
 
 func makeVM(c *gin.Context) {
@@ -114,16 +146,26 @@ func makeVM(c *gin.Context) {
 
     go bootVM(virt)
 
-    c.IndentedJSON(http.StatusOK, virt)
+    c.IndentedJSON(http.StatusOK, virt.Blob)
 }
 
 func killVM(c *gin.Context) {
+    id := c.Param("id")
 
+    for _, virt := range vms.List {
+        if virt.Blob.ID == id {
+            err := virt.Process.Process.Kill()
+            if err != nil {
+                fmt.Fprintln(os.Stderr, err)
+            }
+        }
+    }
+
+    c.IndentedJSON(http.StatusOK, id)
 }
 
 func main() {
     router := gin.Default()
-    router.GET("/api/vm", getStarted)
     router.GET("/api/vm/create/:name", makeVM)
     router.GET("/api/vm/kill/:id", killVM)
 

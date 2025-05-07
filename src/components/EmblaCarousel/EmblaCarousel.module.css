@@ -53,6 +53,20 @@
   pointer-events: none;
 }
 
+.embla__quote {
+  position: absolute;
+  bottom: 20px; /* Adjust as needed */
+  left: 30px; /* Adjust this value to move the quote to the right */
+  right: 30px; /* You can also limit the right margin if needed */
+  color: white; /* Ensure the quote text is readable */
+  font-size: 18px; /* Adjust the font size as needed */
+  font-weight: bold; /* Optional: make the text bold */
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: add a background for better contrast */
+  border-radius: 8px; /* Optional: to round the corners */
+  max-width: calc(100% - 20px); /* Optional: to ensure it doesn't overflow */
+}
+
 .embla__controls {
   display: flex;
   justify-content: center;

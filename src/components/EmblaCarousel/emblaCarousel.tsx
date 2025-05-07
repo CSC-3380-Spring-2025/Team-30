@@ -1,4 +1,3 @@
-"use client";
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import Autoplay from "embla-carousel-autoplay";
@@ -8,11 +7,27 @@ import Image from "next/image";
 
 interface PropType {
   slides: string[];
+  quotes?: string[]; // Making quotes optional
   options?: EmblaOptionsType;
 }
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
+  const { slides, quotes = [], options } = props; // Default quotes to an empty array if not provided
+
+  // Ensure quotes array has the same length as slides, filling with empty strings if necessary
+  const quotesWithDefaults = [
+    ...quotes,
+    ...new Array(slides.length - quotes.length).fill("I love cybersecurity."), // Default message if quotes are fewer
+  ];
+
+  console.log("Slides count:", slides.length);
+  console.log("Quotes count:", quotesWithDefaults.length);
+
+  if (slides.length !== quotesWithDefaults.length) {
+    console.error("Error: Mismatched slides and quotes.");
+    return <div>Error: Mismatched slides and quotes.</div>;
+  }
+
   const autoplayRef = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
 
   // Initialize Autoplay plugin with a delay
@@ -62,6 +77,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 height={300} 
               />
               <div className={styles.embla__overlay}></div>
+              {/* Display the quote on top of the image */}
+              {quotesWithDefaults[index] && (
+                <div className={styles.embla__quote}>
+                  <p>{quotesWithDefaults[index]}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
