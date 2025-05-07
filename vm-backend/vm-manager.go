@@ -1,12 +1,16 @@
 package main
 
 import (
-    //"net/http"
+    "net/http"
     "os/exec"
     "strconv"
+    //"fmt"
+    "math/rand/v2"
+    "sync"
 
-    //"github.com/gin-gonic/gin" // Makes building a REST API easier
+    "github.com/gin-gonic/gin" // Makes building a REST API easier
     "gopkg.in/ini.v1"          // For reading QEMU parameters
+    "github.com/google/uuid"
 )
 import . "vm-manager/bootdev"
 
@@ -16,7 +20,17 @@ type vm struct {
     Arch       string
     Memory     int
     Accel      string
+
+    // for http get/post
+    ID         string
+    Port       int
 }
+
+type vmList struct {
+    List []vm
+    Lock sync.Mutex
+}
+var vms = vmList { List: make([]vm, 0) }
 
 func memToArg(mem int) string {
     gbFlag := false
@@ -38,16 +52,22 @@ func memToArg(mem int) string {
 }
 
 func bootVM(virt vm) {
-    cmd := exec.Command("websockify", "5900", "--",
-	                "qemu-system-" + virt.Arch,
+    portnum := virt.Port - 5900
+    port := strconv.Itoa(portnum)
+
+    cmd := exec.Command("qemu-system-" + virt.Arch,
                         "-m", memToArg(virt.Memory),
-	                "-display", "vnc=127.0.0.1:0",
+	                "-display", "vnc=127.0.0.1:" + port,
                         "-accel", virt.Accel,
 			virt.BootDevice.Arg(), virt.BootDevice.File())
     cmd.Run()
 }
 
-func initVM(id string, cfg *ini.File) vm {
+func initVM(id string) vm {
+    cfg, err := ini.Load("virtfile")
+    if err != nil {
+        cfg = ini.Empty()
+    }
 
     s := cfg.Section(id)
 
@@ -74,16 +94,38 @@ func initVM(id string, cfg *ini.File) vm {
         virt.BootDevice = CDROM(imgPath + "kali.iso")
     }
 
+    virt.ID = uuid.NewString()
+    virt.Port = rand.IntN(3000) + 5900
+
     return virt
 }
 
+func getStarted(c *gin.Context) {
+    c.IndentedJSON(http.StatusOK, vms.List)
+}
+
+func makeVM(c *gin.Context) {
+    name := c.Param("name")
+    virt := initVM(name)
+
+    vms.Lock.Lock()
+    vms.List = append(vms.List, virt)
+    vms.Lock.Unlock()
+
+    go bootVM(virt)
+
+    c.IndentedJSON(http.StatusOK, virt)
+}
+
+func killVM(c *gin.Context) {
+
+}
+
 func main() {
-    cfg, err := ini.Load("virt.ini")
-    if err != nil {
-        cfg = ini.Empty()
-    }
+    router := gin.Default()
+    router.GET("/api/vm", getStarted)
+    router.GET("/api/vm/create/:name", makeVM)
+    router.GET("/api/vm/kill/:id", killVM)
 
-    def := initVM("tomsrtbt", cfg)
-
-    bootVM(def)
+    router.Run("localhost:1701")
 }
