@@ -15,15 +15,15 @@ import (
 import . "vm-manager/bootdev"
 
 type vm struct {
-    Name       string  `json:name`
+    Name       string
     BootDevice BootDev
     Arch       string
     Memory     int
     Accel      string
 
     // for http get/post
-    ID         string  `json:id`
-    Port       int     `json:port`
+    ID         string
+    Port       int
 }
 
 type vmList struct {
@@ -114,7 +114,7 @@ func makeVM(c *gin.Context) {
 
     go bootVM(virt)
 
-    c.IndentedJSON(http.StatusOK, virt.Port)
+    c.IndentedJSON(http.StatusOK, virt)
 }
 
 func killVM(c *gin.Context) {
