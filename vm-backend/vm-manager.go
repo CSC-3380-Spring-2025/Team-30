@@ -1,12 +1,16 @@
 package main
 
 import (
-    //"net/http"
+    "net/http"
     "os/exec"
     "strconv"
+    //"fmt"
+    "math/rand/v2"
+    "sync"
 
-    //"github.com/gin-gonic/gin" // Makes building a REST API easier
+    "github.com/gin-gonic/gin" // Makes building a REST API easier
     "gopkg.in/ini.v1"          // For reading QEMU parameters
+    "github.com/google/uuid"
 )
 import . "vm-manager/bootdev"
 
@@ -16,7 +20,16 @@ type vm struct {
     Arch       string
     Memory     int
     Accel      string
+
+    ID         string  `json:id`
+    Port       int     `json:port`
 }
+
+type vmList struct {
+    List []vm
+    Lock sync.Mutex
+}
+var vms = vmList { List: make([]vm, 0) }
 
 func memToArg(mem int) string {
     gbFlag := false
@@ -38,10 +51,12 @@ func memToArg(mem int) string {
 }
 
 func bootVM(virt vm) {
-    cmd := exec.Command("websockify", "5900", "--",
-	                "qemu-system-" + virt.Arch,
+    portnum := virt.Port - 5900
+    port := strconv.Itoa(portnum)
+
+    cmd := exec.Command("qemu-system-" + virt.Arch,
                         "-m", memToArg(virt.Memory),
-	                "-display", "vnc=127.0.0.1:0",
+	                "-display", "vnc=127.0.0.1:" + port,
                         "-accel", virt.Accel,
 			virt.BootDevice.Arg(), virt.BootDevice.File())
     cmd.Run()
@@ -74,7 +89,22 @@ func initVM(id string, cfg *ini.File) vm {
         virt.BootDevice = CDROM(imgPath + "kali.iso")
     }
 
+    virt.ID = uuid.NewString()
+    virt.Port = rand.IntN(3000) + 5900
+
     return virt
+}
+
+func getStarted(c *gin.Context) {
+    c.IndentedJSON(http.StatusOK, vms.List)
+}
+
+func makeVM(c *gin.Context) {
+
+}
+
+func killVM(c *gin.Context) {
+
 }
 
 func main() {
@@ -83,7 +113,18 @@ func main() {
         cfg = ini.Empty()
     }
 
-    def := initVM("tomsrtbt", cfg)
+    router := gin.Default()
+    router.GET("/api/vm", getStarted)
+    router.POST("/api/vm/create/:id", makeVM)
+    router.POST("/api/vm/kill/:id", killVM)
 
-    bootVM(def)
+    go router.Run("localhost:1701")
+
+    def := initVM("tomsrtbt", cfg)
+    
+    for {
+        if false {
+            go bootVM(def)
+        }
+    }
 }
