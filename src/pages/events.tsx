@@ -6,12 +6,7 @@ import { useState, useEffect } from "react";
 import { jwtDecode } from 'jwt-decode';
 import Button from "@/components/Button/button";
 
-<<<<<<< HEAD
-type CalendarEvent = {
-  id: string;
-=======
 interface CalendarEvent {
->>>>>>> origin/dev
   title: string;
   start: string;
   end: string;
@@ -65,18 +60,9 @@ function Events() {
     const fetchEvents = async () => {
       try {
         const response = await fetch("/api/events");
-<<<<<<< HEAD
-        const data = await response.json();
-        const formattedEvents = data.map((event: any) => ({
-          ...event,
-          id: event.id.toString(),
-        }));
-        setEvents(formattedEvents);
-=======
         const data = await response.json() as CalendarEvent[];
         console.log("Fetched events:", data);
         setEvents(data);
->>>>>>> origin/dev
       } catch (error) {
         console.error("Error fetching events:", error);
       }
@@ -85,16 +71,9 @@ function Events() {
     void fetchEvents();
   }, []);
 
-<<<<<<< HEAD
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-=======
   const handleDateClick = async (arg: DateClickArg) => {
     const title = prompt("Enter event title:");
     if (!title) return;
->>>>>>> origin/dev
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -202,32 +181,7 @@ function Events() {
             end: "timeGridDay,timeGridWeek,dayGridMonth",
           }}
           events={events}
-<<<<<<< HEAD
-          eventContent={({ event }) => (
-            <div>
-              <span
-                style={{
-                  backgroundColor: "lightblue",
-                  color: "black",
-                  padding: "2px 5px",
-                  borderRadius: "5px",
-                }}
-              >
-                {event.title}
-              </span>
-              {isOfficer && (
-                <button
-                  onClick={() => handleDeleteEvent(event.id)}
-                  style={{ marginLeft: "10px", color: "red" }}
-                >
-                  Delete
-                </button>
-              )}
-            </div>
-          )}
-=======
           dateClick={(arg) => void handleDateClick(arg)}
->>>>>>> origin/dev
         />
       </div>
 
