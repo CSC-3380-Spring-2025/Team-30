@@ -1,0 +1,104 @@
+.title {
+    margin-top: 20px;
+    font-size: 60px;
+    text-align: center;
+  }
+
+  .content {
+    padding-top: 20px; 
+}
+
+.ctficon {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;    
+  }
+
+  .ctflisting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px; 
+}
+
+  
+.ctfnumber{
+    font-size: 55px;
+    padding-left: 50px;
+}
+
+.ctftext {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+.ctfname {
+    font-size: 45px;
+    text-align: center;
+  }
+
+.ctfdesc{
+    font-size: 40px;
+    text-align: justify;
+}
+
+.desccontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90%; 
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.ctfhint{
+  font-size: 30px;
+    text-align: left;
+}
+
+.leftContent {
+  flex: 2;
+  max-width: 60%;
+  padding-right: 40px; 
+}
+
+.rightContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.hintWrapper {
+  position: relative;
+  display: inline-block;
+  padding-left: 70px;
+}
+
+.ctfhintHidden {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  font-size: 20px;
+  color: #aaa;
+  text-align: left;
+  margin-left: 0;  
+}
+
+.hintWrapper:hover .ctfhintHidden {
+  opacity: 1;
+}
+
+.submitButtonWrapper {
+  margin-top: 30px;
+  margin-left: 60px;
+}
+
+.terminalButtonWrapper {
+  margin-top: 30px;
+  margin-left: 60px;
+}

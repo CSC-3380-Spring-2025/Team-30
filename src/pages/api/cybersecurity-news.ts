@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import NewsAPI from "ts-newsapi";
 import levenshtein from "fast-levenshtein";
 import { unstable_cache } from 'next/cache';
-import { mockCyberArticles } from "./mocks/cybersecurity-news-mocks";
+//import { mockCyberArticles } from "./mocks/cybersecurity-news-mocks"; //gets rid of lint error when commented out
 
 const apiKey = process.env.NEWSAPI_KEY;
 if (!apiKey) throw new Error("NEWSAPI_KEY is not defined in .env");

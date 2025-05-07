@@ -1,5 +1,4 @@
 import Image from "next/image";
-import HamburgerMenu from "@/components/HamburgerMenu/hamburgerMenu";
 import styles from "./TopHeader.module.css";
 import Link from "next/link"; 
 
@@ -15,11 +14,10 @@ const TopHeader = () => {
           alt="Logo"
         />
       </Link>
-      <HamburgerMenu />
       <div className={styles.buttonP}>
-      <a href="/login">
-        <button>Login/Register</button>
-      </a>
+        <Link href="/login">
+          <button>Login/Register</button>
+        </Link>
       </div>
     </div>
   );

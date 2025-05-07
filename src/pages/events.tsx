@@ -1,17 +1,31 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction";
+import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import { useState, useEffect } from "react";
 import { jwtDecode } from 'jwt-decode';
 import Button from "@/components/Button/button";
 
+<<<<<<< HEAD
 type CalendarEvent = {
   id: string;
+=======
+interface CalendarEvent {
+>>>>>>> origin/dev
   title: string;
   start: string;
   end: string;
-};
+}
+
+interface CreatedEvent {
+  title: string;
+  event_date: string;
+  end_date: string;
+}
+
+interface ApiError {
+  message: string;
+}
 
 type DecodedToken = {
   email: string;
@@ -51,24 +65,36 @@ function Events() {
     const fetchEvents = async () => {
       try {
         const response = await fetch("/api/events");
+<<<<<<< HEAD
         const data = await response.json();
         const formattedEvents = data.map((event: any) => ({
           ...event,
           id: event.id.toString(),
         }));
         setEvents(formattedEvents);
+=======
+        const data = await response.json() as CalendarEvent[];
+        console.log("Fetched events:", data);
+        setEvents(data);
+>>>>>>> origin/dev
       } catch (error) {
         console.error("Error fetching events:", error);
       }
     };
 
-    fetchEvents();
+    void fetchEvents();
   }, []);
 
+<<<<<<< HEAD
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+=======
+  const handleDateClick = async (arg: DateClickArg) => {
+    const title = prompt("Enter event title:");
+    if (!title) return;
+>>>>>>> origin/dev
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,7 +138,7 @@ function Events() {
       
 
       if (response.ok) {
-        const created = await response.json();
+        const created = await response.json() as CreatedEvent;
         setEvents((prev) => [
           ...prev,
           {
@@ -125,7 +151,7 @@ function Events() {
         setShowModal(false);
         setFormData({ title: "", date: "", startTime: "", duration: "" });
       } else {
-        const errorData = await response.json();
+        const errorData = await response.json() as ApiError;
         alert(`Error: ${errorData.message}`);
       }
     } catch (error) {
@@ -176,6 +202,7 @@ function Events() {
             end: "timeGridDay,timeGridWeek,dayGridMonth",
           }}
           events={events}
+<<<<<<< HEAD
           eventContent={({ event }) => (
             <div>
               <span
@@ -198,6 +225,9 @@ function Events() {
               )}
             </div>
           )}
+=======
+          dateClick={(arg) => void handleDateClick(arg)}
+>>>>>>> origin/dev
         />
       </div>
 

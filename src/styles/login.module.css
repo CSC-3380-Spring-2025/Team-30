@@ -27,15 +27,23 @@
 .loginInput{
     height: 50px;
     width: 500px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid rgb(0, 0, 0);
+    outline: 1px solid transparent;
     font-size: 18px;
     padding-left: 20px;
     align-self: center;
+    background-color: #121212;
+    color: var(--light);
+    transition: outline-color 0.2s ease;
+}
+
+.loginInput:hover {
+  outline-color: #e0e0e0;
 }
 
 .loginInput:focus{
-    outline:none;
+    outline: 1px solid #e0e0e0;
 }
 
 .loginButton{
@@ -50,7 +58,6 @@
     cursor: pointer;
     align-self: center;
 }
-
 
 .sslicon {
     width: 250px;

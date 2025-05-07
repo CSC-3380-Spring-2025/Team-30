@@ -62,8 +62,24 @@
   text-decoration: none;
   font-size: clamp(16px, 4vw, 30px);
   transition: color 0.3s ease; /* Smooth transition */
+  position: relative;
+}
+
+.menuContent a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: #ffe082;
+  transition: width 0.3s ease;
+}
+
+.menuContent a:hover::after {
+  width: 125%;
 }
 
 .menuContent a:hover {
-  color: #555454;
+  color: #ffe082;
 }
