@@ -2,15 +2,23 @@
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  background-color: #1b1a1a;
+  background-color: black;
   height: 75px;
   width: 100vw; /* Only the content width */
   padding-top: 5px;
   flex-shrink: 0; /* Prevent shrinking */
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .logo {
   height: auto; 
   width: auto; /* Adjust based on the image size */
   max-height: 100%;
+}
+
+.buttonP {
+  position: absolute;
+  right: 20px;
 }

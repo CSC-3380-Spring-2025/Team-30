@@ -1,22 +1,40 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;  
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
 
 .title {
-    font-size: 60px;
-    text-align: center;
-  }
+  font-size: 60px;
+  text-align: center;
+}
 
-.president{
-    padding-top: 30px;
+.year {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 
-.year{
-    font-size: 40px;
-    text-align: center;
+.content {
+  width: 90%;
+  max-width: 1200px;
+}
+
+.officerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  margin-top: 40px;
+}
+
+.officer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pic {
@@ -32,39 +50,80 @@
     /* border-radius: 50%;    For rectangle images but I currently only have circles */
     object-fit: cover;    
     /* border: 2px solid #333;  */
-    transition: transform 0.3s ease;
-    transition-delay: 0s;
   }
 
-  .picture:hover {
-    animation: slideLeftAndHold 10s ease forwards;
-  }
 
-  @keyframes slideLeftAndHold {
-    0% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(-500px);
-    }
-    75% {
-      transform: translateX(-500px); /* Hold position */
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
+.picWrapper {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 10px;
+}
 
- .name{
-    text-align: center;
-    font-size: 40px;
- }
+.picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease-in-out;
+  z-index: 1;
+  position: relative;
+}
 
- .bio{
-    padding-top: 30px;
-    text-align: justify;
-    font-size: 30px;
- }
+.slide {
+  transform: translateX(-100%);
+}
+
+.bioOverlay {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: left 0.6s ease-in-out;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.officer:hover .bioOverlay {
+  left: 0;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bio {
+  font-size: 18px;
+  text-align: justify;
+}
+
+.roleLabel {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px black;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.officer:hover .roleLabel {
+  opacity: 0;
+}
 
  .bioContainer{
     width: 800px;
@@ -74,3 +133,4 @@
     overflow: auto;           
     margin: 20px auto; 
  }
+

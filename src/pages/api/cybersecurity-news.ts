@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import NewsAPI from "ts-newsapi";
 import levenshtein from "fast-levenshtein";
 import { unstable_cache } from 'next/cache';
-import { mockCyberArticles } from "./mocks/cybersecurity-news-mocks";
+//import { mockCyberArticles } from "./mocks/cybersecurity-news-mocks"; //gets rid of lint error when commented out
 
 const apiKey = process.env.NEWSAPI_KEY;
 if (!apiKey) throw new Error("NEWSAPI_KEY is not defined in .env");
@@ -21,13 +21,13 @@ const LOW_QUALITY_TERMS = [
   'how to', 'tips', 'blog', 'commentary'
 ];
 // Mock handler - uncomment the real one below when needed
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+/*export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   console.log("Using mock cybersecurity news data");
   return res.status(200).json({ articles: mockCyberArticles });
-}
+}*/
 
 // Actual handler - uncomment this when you want to fetch real data
-/*
+
 const getCyberNews = unstable_cache(
   async () => {
     try {
@@ -80,9 +80,9 @@ const getCyberNews = unstable_cache(
       });
 
       // Improved deduplication with title similarity check
-      const uniqueArticles = filteredArticles.reduce((acc, article) => {
+      const uniqueArticles = filteredArticles.reduce<typeof filteredArticles>((acc, article) => {
         if (!article.title) return acc;
-        
+      
         const isDuplicate = acc.some(existing => {
           if (!existing.title) return false;
           const titleSimilarity = levenshtein.get(
@@ -91,15 +91,17 @@ const getCyberNews = unstable_cache(
           );
           return titleSimilarity < 20;
         });
+      
         return isDuplicate ? acc : [...acc, article];
-      }, [] as typeof filteredArticles);
+      }, []);
+      
 
       // Safe keyword counting function
       const countKeywords = (title: string | null | undefined, description: string | null | undefined): number => {
         if (!title && !description) return 0;
         
-        const titleStr = title?.toLowerCase() || '';
-        const descStr = description?.toLowerCase() || '';
+        const titleStr = title?.toLowerCase() ?? ''; // Changed to nullish coalescing
+        const descStr = description?.toLowerCase() ?? ''; // Changed to nullish coalescing
         
         return QUALITY_KEYWORDS.filter(k => 
           titleStr.includes(k.toLowerCase()) || 
@@ -114,20 +116,19 @@ const getCyberNews = unstable_cache(
         
         // Prefer shorter, more concise titles
         return bKeywords - aKeywords || 
-              (a.title?.length || 0) - (b.title?.length || 0);
+              (a.title.length) - (b.title.length); // Changed to nullish coalescing
       });
 
       // Return top 3 articles with enhanced metadata
       return rankedArticles.slice(0, 3).map(article => {
-        const sourceName = article.source?.name || 
-                          (article.url ? new URL(article.url).hostname.replace('www.', '') : 'Unknown');
+        const sourceName = article.source.name 
         return {
-          title: article.title?.replace(/ - [^-]+$/, '') || 'No title',
-          description: article.description || 'No description',
-          url: article.url || '#',
-          urlToImage: article.urlToImage || '',
+          title: article.title.replace(/ - [^-]+$/, ''),
+          description: article.description ?? 'No description', // Changed to nullish coalescing
+          url: article.url,
+          urlToImage: article.urlToImage,
           source: sourceName,
-          date: article.publishedAt || new Date().toISOString()
+          date: article.publishedAt
         };
       });
 
@@ -151,4 +152,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       message: error instanceof Error ? error.message : 'Unknown error'
     });
   }
-}*/
+}

@@ -10,6 +10,10 @@ const HamburgerMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false); 
+  };
+
   return (
     <div className={styles.hamburgerMenu}>
       <div
@@ -21,11 +25,11 @@ const HamburgerMenu = () => {
       </div>
       <div className={`${styles.menuContent} ${isOpen ? styles.active : ""}`}>
         <ul className={vt323.className}>
-          <li><a href="/">Home</a></li>
-          <li><a href="/CTFS">CTFs</a></li>
-          <li><a href="/events">Events</a></li>
-          <li><a href="#">Forum</a></li>
-          <li><Link href="/About">About</Link></li>
+          <li><Link href="/" onClick={closeMenu}>Home</Link></li> 
+          <li><Link href="/CTFS" onClick={closeMenu}>CTFs</Link></li> 
+          <li><Link href="/events" onClick={closeMenu}>Events</Link></li>
+          <li><a href="#" onClick={closeMenu}>Forum</a></li>
+          <li><Link href="/About" onClick={closeMenu}>About</Link></li>
         </ul>
       </div>
     </div>
