@@ -21,8 +21,9 @@ type vm struct {
     Memory     int
     Accel      string
 
-    ID         string  `json:id`
-    Port       int     `json:port`
+    // for http get/post
+    ID         string
+    Port       int
 }
 
 type vmList struct {
@@ -62,7 +63,11 @@ func bootVM(virt vm) {
     cmd.Run()
 }
 
-func initVM(id string, cfg *ini.File) vm {
+func initVM(id string) vm {
+    cfg, err := ini.Load("virtfile")
+    if err != nil {
+        cfg = ini.Empty()
+    }
 
     s := cfg.Section(id)
 
@@ -100,7 +105,16 @@ func getStarted(c *gin.Context) {
 }
 
 func makeVM(c *gin.Context) {
+    name := c.Param("name")
+    virt := initVM(name)
 
+    vms.Lock.Lock()
+    vms.List = append(vms.List, virt)
+    vms.Lock.Unlock()
+
+    go bootVM(virt)
+
+    c.IndentedJSON(http.StatusOK, virt)
 }
 
 func killVM(c *gin.Context) {
@@ -108,23 +122,10 @@ func killVM(c *gin.Context) {
 }
 
 func main() {
-    cfg, err := ini.Load("virt.ini")
-    if err != nil {
-        cfg = ini.Empty()
-    }
-
     router := gin.Default()
     router.GET("/api/vm", getStarted)
-    router.POST("/api/vm/create/:id", makeVM)
-    router.POST("/api/vm/kill/:id", killVM)
+    router.GET("/api/vm/create/:name", makeVM)
+    router.GET("/api/vm/kill/:id", killVM)
 
-    go router.Run("localhost:1701")
-
-    def := initVM("tomsrtbt", cfg)
-    
-    for {
-        if false {
-            go bootVM(def)
-        }
-    }
+    router.Run("localhost:1701")
 }
