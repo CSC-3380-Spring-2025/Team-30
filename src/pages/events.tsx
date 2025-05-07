@@ -2,7 +2,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { jwtDecode } from 'jwt-decode';
 import Button from "@/components/Button/button";
 
@@ -14,6 +14,7 @@ interface CalendarEvent {
 }
 
 interface CreatedEvent {
+  id: string;
   title: string;
   event_date: string;
   end_date: string;
@@ -75,6 +76,7 @@ function Events() {
   const handleDateClick = async (arg: DateClickArg) => {
     const title = prompt("Enter event title:");
     if (!title) return;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -169,6 +171,13 @@ function Events() {
       alert("An error occurred while deleting the event.");
     }
   };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {name,value} = e.target;
+
+    setFormData((prevData) => ({
+      ...prevData, [name]: value,
+    }))};
   
   return (
     <>
@@ -254,5 +263,4 @@ function Events() {
     </>
   );
 }
-
 export default Events;
