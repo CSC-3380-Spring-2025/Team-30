@@ -31,7 +31,7 @@ export default function Home() {
         // Optional: redirect to dashboard
         // router.push("/dashboard");
       } else {
-        setError(data.message || 'Login failed');
+        setError(data.message ?? 'Login failed');
       }
     } catch (err) {
       setError('Something went wrong during login.');

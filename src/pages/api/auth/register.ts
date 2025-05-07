@@ -21,7 +21,8 @@ export default async function handler(
     });
 
     if (existingUser) {
-      return res.status(400).json({ error: "User already exists" });
+      res.status(400).json({ error: "User already exists" });
+      return
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);

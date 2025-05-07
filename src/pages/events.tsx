@@ -13,6 +13,7 @@ interface CalendarEvent {
 }
 
 interface CreatedEvent {
+  id: string;
   title: string;
   event_date: string;
   end_date: string;
