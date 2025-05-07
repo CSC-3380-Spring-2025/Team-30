@@ -19,7 +19,11 @@ export default function Home() {
   }
 
   if (entry.sys === "vm-manager") {
-    return <Link href="/vm/vnc.html">Launch VM Manager</Link>;
+    const vm = entry.type ? entry.type : "default";
+    const response = await fetch("http://localhost:1701/api/vm/create/" + vm);
+    const data = await response.json();
+
+    return <Link href="/vm/vnc.html?port={data.Port}">Launch Workspace</Link>;
   }
 
   return <p>Something went wrong.</p>;
