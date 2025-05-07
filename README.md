@@ -17,7 +17,20 @@ The SSL website had issues.  We're fixing those issues.
 
 🛠️ Local Development Setup
 ------------------
-📦 Step 1: Clone the Repository
+📦 Dependencies Installation
+Run the following commands to install all required packages:
+```npm install next react react-dom```
+```npm install @prisma/client```
+```npm install prisma --save-dev```
+```npm install jsonwebtoken``
+```npm install embla-carousel-react embla-carousel-autoplay```
+```npm install dotenv```
+
+(Optional, if using TypeScript)
+```npm install --save-dev @types/node @types/jsonwebtoken```
+
+
+🧪Step 1: Clone the Repository
 ```git clone https://github.com/your-team/ssl-club-website.git```
 ```cd ssl-club-website```
 
@@ -40,6 +53,7 @@ Once installed, create a local database:
 🗂️ Step 4: Create a .env File
 Create a .env file in the root of the project:
 ```DATABASE_URL="postgresql://postgres@localhost:5432/club_db"```
+```JWT_SECRET="your_super_secret_key"```
 You can replace postgres with your actual PostgreSQL username.
 
 🔧 Step 5: Set Up Prisma
