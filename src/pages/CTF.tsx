@@ -42,8 +42,8 @@ export default function Home() {
                         Hint 1 Appears When User Hovers Over It. </div>
                         </div>
                         <div className={styles.terminalButtonWrapper}>
-                    <a href="/vm/vnc.html" target="_blank" rel="noopener noreferrer">
-                        <Button text="Launch Terminal" />
+                    <a href="/vm/vm.html?path=ws://localhost:5900&autoconnect=1" target="_blank" rel="noopener noreferrer">
+                        <Button text="Launch Workspace" />
                     </a>
                     </div>
                     <div className={styles.submitButtonWrapper}>

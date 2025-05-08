@@ -76,7 +76,9 @@ func makeVMProcess(virt vm) *exec.Cmd {
     portnum := virt.Port - 5900
     port := strconv.Itoa(portnum)
 
-    cmd := exec.Command("qemu-system-" + virt.Arch,
+    // hardcoded for now, but this is clearly extensible
+    cmd := exec.Command("../websockify/run", "5900", "--"
+	                "qemu-system-" + virt.Arch,
                         "-m", memToArg(virt.Memory),
 	                "-display", "vnc=127.0.0.1:" + port,
                         "-accel", virt.Accel,
@@ -91,7 +93,7 @@ func bootVM(virt vm) {
         fmt.Fprintln(os.Stderr, err)
     }
 
-    <-time.After(1 * time.Minute)
+    <-time.After(1 * time.Hour)
     err = virt.Process.Process.Kill()
     if err != nil {
         fmt.Fprintln(os.Stderr, err)
