@@ -77,7 +77,7 @@ func makeVMProcess(virt vm) *exec.Cmd {
     port := strconv.Itoa(portnum)
 
     // hardcoded for now, but this is clearly extensible
-    cmd := exec.Command("../websockify/run", "5900", "--"
+    cmd := exec.Command("../websockify/run", "5900", "--",
 	                "qemu-system-" + virt.Arch,
                         "-m", memToArg(virt.Memory),
 	                "-display", "vnc=127.0.0.1:" + port,
