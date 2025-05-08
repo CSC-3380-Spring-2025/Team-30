@@ -15,7 +15,7 @@ const BottomHeader = () => {
   return (
     <div className={styles.bottomBox}>
       <div className={styles.socialLinks}>
-        <Link href="https://discord.gg/r6bJ8vrM" target="_blank" rel="noopener noreferrer">
+        <Link href="https://discord.gg/EACydvmfqH" target="_blank" rel="noopener noreferrer">
           <IoLogoDiscord className={styles.socialIcon} />
         </Link>
         <Link href="https://tigerlink.lsu.edu/ssl/home/" target="_blank" rel="noopener noreferrer">
