@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import styles from '../styles/register.module.css';
 import { useState } from "react";
 
