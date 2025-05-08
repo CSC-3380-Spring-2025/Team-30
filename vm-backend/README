@@ -30,7 +30,7 @@ reasonably prevent.  These edits should be obvious and trivial.
 
 The default VM images were chosen for their pure emulated performance,
 not their beauty.  Should you wish to run Kali, that option is provided
-in `virt-heavy.ini`, but expect *long* boot times (>30min without acceleration).
+in `virtfile-heavy` (which should be renamed to virtfile), but expect *long* boot times (>30min without acceleration).
 
 Build
 -----
