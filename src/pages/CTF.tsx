@@ -5,8 +5,8 @@ import Button from "@/components/Button/button";
 
 // import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
 
-export default async function Home() {
-    await fetch("http://localhost:1701/api/vm/create/tomsrtbt");
+export default function Home() {
+    fetch("http://localhost:1701/api/vm/create/tomsrtbt");
     return (
         <div className="container">
             <div className="topBox">

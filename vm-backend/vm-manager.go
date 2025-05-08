@@ -73,14 +73,14 @@ func selectPort() int {
 }
 
 func makeVMProcess(virt vm) *exec.Cmd {
-    portnum := virt.Port - 5900
-    port := strconv.Itoa(portnum)
+    //portnum := virt.Port - 5900
+    //port := strconv.Itoa(portnum)
 
     // hardcoded for now, but this is clearly extensible
     cmd := exec.Command("../websockify/run", "5900", "--",
 	                "qemu-system-" + virt.Arch,
                         "-m", memToArg(virt.Memory),
-	                "-display", "vnc=127.0.0.1:" + port,
+	                "-display", "vnc=127.0.0.1:0", //+ port,
                         "-accel", virt.Accel,
 			virt.BootDevice.Arg(), virt.BootDevice.File())
 
