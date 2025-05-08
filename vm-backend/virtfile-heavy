@@ -1,0 +1,7 @@
+image path = /home/cam/os
+
+[default]
+arch = x86_64
+cdrom = kali.iso
+accel = kvm
+mem = 4096
