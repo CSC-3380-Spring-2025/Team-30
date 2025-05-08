@@ -28,7 +28,6 @@ const HamburgerMenu = () => {
           <li><Link href="/" onClick={closeMenu}>Home</Link></li> 
           <li><Link href="/CTFS" onClick={closeMenu}>CTFs</Link></li> 
           <li><Link href="/events" onClick={closeMenu}>Events</Link></li>
-          <li><a href="#" onClick={closeMenu}>Forum</a></li>
           <li><Link href="/About" onClick={closeMenu}>About</Link></li>
         </ul>
       </div>
