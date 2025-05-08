@@ -17,7 +17,7 @@ The SSL website had issues.  We're fixing those issues.
 
 🛠️ Local Development Setup
 ------------------
-📦 Dependencies Installation
+📦 Dependencies Installation (you should probably do this after cloning)
 Run the following commands to install all required packages:
 ```npm install next react react-dom```
 ```npm install @prisma/client```
@@ -31,7 +31,7 @@ Run the following commands to install all required packages:
 
 
 🧪Step 1: Clone the Repository
-```git clone https://github.com/your-team/ssl-club-website.git```
+```git clone --recurse-submodules https://github.com/CSC-3380-Spring-2025/Team-30 ssl-club-website```
 ```cd ssl-club-website```
 
 🧱 Step 2: Install Dependencies
@@ -66,8 +66,17 @@ Prisma is our ORM for managing the database schema.
 3. (Optional) View and Edit Data in a GUI
     ```npx prisma studio```
 
-💻 Step 6: Start the Dev Server
-    ```npm run dev```
+$ Step 6: Set Up VM Backend
+You'll need to download some ISOs for the VMs.  I recommend something lightweight.  Please read the README provided with vm-manager.
+1. Build websockify
+    ```cd websockify; make```
+2. Build vm-manager
+    ```cd vm-backend; go build .```
+3. Edit `virtfile` to match your system (default is the only one used so far)
+
+💻 Step 7: Start the Dev Server
+    ```shell1$ npm run dev```
+    ```shell2$ cd vm-backend; ./vm-manager```
 
 The project should now be running on http://localhost:3000 (or another port if configured differently).
 
@@ -76,9 +85,9 @@ Platforms Tested on
 
 - [ ] Android
 - [ ] iOS
-- [ ] Linux
-- [ ] MacOS
-- [ ] Windows
+- [X] Linux
+- [X] MacOS
+- [X] Windows
 
 Styles Guide
 ------------
