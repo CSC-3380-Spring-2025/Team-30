@@ -6,7 +6,7 @@ import Button from "@/components/Button/button";
 // import HamburgerMenu from "@/components/hamburgerMenu"; // Import the HamburgerMenu component
 
 export default function Home() {
-    fetch("http://localhost:1701/api/vm/create/tomsrtbt");
+    fetch("http://localhost:1701/api/vm/create/default");
     return (
         <div className="container">
             <div className="topBox">
