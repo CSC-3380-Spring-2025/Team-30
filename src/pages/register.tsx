@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import styles from '../styles/register.module.css';
 import { useState } from "react";
 
@@ -57,37 +56,12 @@ export default function Register() {
 
         <div className={styles.loginRight}>
           <form className={styles.loginBox} onSubmit={handleSubmit}>
-=======
-import Image from 'next/image';
-import Button from '@/components/Button/button';
-import styles from './register.module.css';
-
-export default function Home() {
-  //theres definetly wayyy better ways to do this but this is the best I can come up with rn with the research i've done
-  //gonna have to figure out how to make the text appear as the picture slides
-  //its not actively registering that the cursor is still over the proximity of the image so it just slides back before i move the cursor
-
-  return (
-    <div className={styles.container}>
-      <div className="content">
-        <div className={styles.title}>
-          Security Society at LSU
-        </div>
-        <div className={styles.title}>
-          Register
-        </div>
-        <div className={styles.loginRight}>
-          <form className={styles.loginBox}>
->>>>>>> origin/dev
             <input
               placeholder="Enter your email here."
               type="email"
               required
-<<<<<<< HEAD
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-=======
->>>>>>> origin/dev
               className={styles.loginInput}
             />
             <input
@@ -95,11 +69,8 @@ export default function Home() {
               type="password"
               required
               minLength={6}
-<<<<<<< HEAD
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-=======
->>>>>>> origin/dev
               className={styles.loginInput}
             />
             <input
@@ -107,7 +78,6 @@ export default function Home() {
               type="password"
               required
               minLength={6}
-<<<<<<< HEAD
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className={styles.loginInput}
@@ -120,23 +90,6 @@ export default function Home() {
           {error && <div className={styles.error}>{error}</div>}
         </div>
         <img src="./SSLIcon.png" alt="SSL Icon" className={styles.sslicon} />
-=======
-              className={styles.loginInput}
-            />
-            <Button
-              text="Register"
-              type="submit"
-            />
-          </form>
-        </div>
-        <Image
-          src="/SSLIcon.png"
-          alt="SSL Icon"
-          className={styles.sslicon}
-          width={100}
-          height={100}
-        />
->>>>>>> origin/dev
       </div>
     </div>
   );
